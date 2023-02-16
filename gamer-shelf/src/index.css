@@ -14,13 +14,25 @@
   color: var(--text);
   background-color: var(--background);
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
+
+::-webkit-scrollbar {
+  width:6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+  opacity: 1;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text);
+  border-radius: 3px;
+}
+
+body {
+  overflow: overlay;
+}
+

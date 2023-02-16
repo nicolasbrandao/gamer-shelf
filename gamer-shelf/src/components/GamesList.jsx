@@ -1,5 +1,5 @@
 import { useFetchGamesQuery } from "../store";
-import { GameCard, Skeleton } from ".";
+import { GameCard, Skeleton } from "./";
 import classNames from "classnames";
 
 

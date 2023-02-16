@@ -3,7 +3,7 @@ import classNames from "classnames"
 
 const App = () => {
   const appContainer = classNames(
-    'font-poppins'
+    'font-montserrat'
   )
   return (
     <div className={appContainer}>

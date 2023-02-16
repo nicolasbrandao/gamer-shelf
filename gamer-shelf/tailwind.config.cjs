@@ -14,7 +14,7 @@ module.exports = {
         'txt1': '#f2f2f2'
       },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"]
+        montserrat: ["Montserrat", "sans-serif"]
       },
     },
   },

@@ -6,13 +6,11 @@ const GameCard = ({game}) => {
   const gameContainer = classNames(
     'flex',
     'flex-col',
-    'gap-4',
     'bg-frg1',
     'items-center',
-    'justify-center',
     'rounded',
-    'p-4',
     'w-[250px]',
+    'h-[300px]',
     'flex-auto',
     'cursor-pointer',
     'shadow-2xl'
@@ -26,7 +24,19 @@ const GameCard = ({game}) => {
   )
 
   const gameThumbnail = classNames(
-    'rounded'
+    'w-full',
+    'rounded-t',
+    'overflow-hidden'
+  )
+
+  const gameBody = classNames(
+    'p-4',
+    'h-[12rem]',
+    'w-full',
+    'flex',
+    'flex-col',
+    'items-center',
+    'justify-between'
   )
 
   const gameFooter = classNames(
@@ -52,11 +62,16 @@ const GameCard = ({game}) => {
     'justify-center'
   )
 
+  const gameDescription = classNames(
+    'text-sm'
+  )
+
   const gameGenre = classNames(
     'rounded',
     'bg-frg2',
     'px-1',
-    'text-sm'
+    'text-sm',
+    'text-xs'
   )
 
   let infoContent;
@@ -68,22 +83,24 @@ const GameCard = ({game}) => {
 
   return (
     <div className={gameContainer}>
-      <div className={gameTitle}>
-        {game.title}
-      </div>
       <div>
         <img className={gameThumbnail} src={game.thumbnail} alt={game.title} />
       </div>
-      <div>
-        {game.short_description.substring(0, 30)+'...'}
-      </div>
-      <div className={gameFooter}>
-        <div>
-          <GoPlus className={addButton}  />
+      <div className={gameBody}>
+        <div className={gameTitle}>
+          {game.title}
         </div>
-        <div className={gameInfo}>
-          <div className={gameGenre}>{game.genre}</div>
-          <div>{infoContent}</div>
+        <div className={gameDescription}>
+          {game.short_description.substring(0, 31)+'...'}
+        </div>
+        <div className={gameFooter}>
+          <div>
+            <GoPlus className={addButton}  />
+          </div>
+          <div className={gameInfo}>
+            <div className={gameGenre}>{game.genre}</div>
+            <div>{infoContent}</div>
+          </div>
         </div>
       </div>
     </div>
