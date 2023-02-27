@@ -1,17 +1,23 @@
-import { GamesList, Navbar } from "./components"
 import classNames from "classnames"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navbar, GamesList, LibraryList } from "./components"
 
 const App = () => {
   const appContainer = classNames(
     'font-montserrat'
   )
   return (
-    <div className={appContainer}>
+    <BrowserRouter>
+      <div className={appContainer}>
         <Navbar />
-      <div>
-        <GamesList />
+        <div>
+          <Routes>
+            <Route exact path={'/'} element={<GamesList />} />
+            <Route path={'/library'} element={<LibraryList />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   )
 }
 

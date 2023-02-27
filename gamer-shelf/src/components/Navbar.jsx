@@ -1,8 +1,10 @@
+import { Dropdown } from './'
 import classNames from 'classnames'
+import { Link } from 'react-router-dom'
 import { dropDownContent } from '../constants'
 import { VscLibrary } from 'react-icons/vsc'
 import { IoGameControllerOutline } from 'react-icons/io5'
-import { Dropdown } from './'
+
 
 const Navbar = () => {
   const navbar = classNames(
@@ -69,16 +71,21 @@ const Navbar = () => {
 
   return (
     <nav className={navbar}>
-      <div className={navBrand}>
-        <span className={brandText}>GamerShelf</span> 
-        <IoGameControllerOutline className={brandIcon} />
-      </div>
+      
+      <Link to={'/'}>
+        <div className={navBrand}>
+          <span className={brandText}>GamerShelf</span> 
+          <IoGameControllerOutline className={brandIcon} />
+        </div>
+      </Link>
       <div>
         <ul className={navList}>
           {navMenus}
           <li>
-            <VscLibrary className={libraryIcon} />
-            <div className={libCounter}>88</div>
+            <Link to='/library'>
+              <VscLibrary className={libraryIcon} />
+              <div className={libCounter}>88</div>
+            </Link>
           </li>
         </ul>
       </div>

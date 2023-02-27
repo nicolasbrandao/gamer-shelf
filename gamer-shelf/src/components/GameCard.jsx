@@ -1,14 +1,24 @@
 import classNames from "classnames"
+import { useDispatch } from "react-redux";
+import { addGameToLibrary } from '../store'
 import { GoPlus, GoBrowser } from "react-icons/go"
 import { FaWindows } from "react-icons/fa"
 
 const GameCard = ({game}) => {
+  const dispatch = useDispatch();
+
+
+  const handleAddGame = (gameID) => {
+    dispatch(addGameToLibrary(gameID))
+  }
+
   const gameContainer = classNames(
     'flex',
     'flex-col',
     'bg-frg1',
     'items-center',
     'rounded',
+    'max-w-[250px]',
     'w-[250px]',
     'h-[300px]',
     'flex-auto',
@@ -91,11 +101,11 @@ const GameCard = ({game}) => {
           {game.title}
         </div>
         <div className={gameDescription}>
-          {game.short_description.substring(0, 31)+'...'}
+          {game.short_description.substring(0, 27) + '...'}
         </div>
         <div className={gameFooter}>
           <div>
-            <GoPlus className={addButton}  />
+            <GoPlus className={addButton} onClick={() => handleAddGame(game.id)} />
           </div>
           <div className={gameInfo}>
             <div className={gameGenre}>{game.genre}</div>

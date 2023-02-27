@@ -1,9 +1,18 @@
 import classNames from "classnames";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggle } from '../store'
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 
 const Dropdown = ({data}) => {
-  const [toggle, setToggle] = useState(false)
+  const dispatch = useDispatch();
+
+  const isOpen = useSelector((state) => {
+    return state.dropdowns.isOpen;
+  })
+
+  const handleClick = (dropDownID) => {
+    dispatch(toggle(dropDownID));
+  }
 
   const menuTitle = classNames(
     'flex',
@@ -23,15 +32,16 @@ const Dropdown = ({data}) => {
     'rounded',
     'min-w-[120px]',
     'p-2',
-    (toggle ? 'flex' : 'hidden')
+    (isOpen === data.id ? 'flex' : 'hidden')
   )
 
   const list = data.items.map((item) => <li key={item.id}>{item.title}</li> )
+  const iconContent = isOpen === data.id ? <GoChevronUp className={menuIcon} /> : <GoChevronDown className={menuIcon} />
 
   return (
-    <div>
-      <div className={menuTitle} onClick={() => setToggle(prev => !prev)}>
-        {data.title} <GoChevronDown className={menuIcon} />
+    <div onClick={() => handleClick(data.id)}>
+      <div className={menuTitle}>
+        {data.title} {iconContent}
       </div>
       <div className={menuContainer}>
         <ul>
