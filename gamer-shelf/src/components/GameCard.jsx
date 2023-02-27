@@ -101,7 +101,7 @@ const GameCard = ({game}) => {
           {game.title}
         </div>
         <div className={gameDescription}>
-          {game.short_description.substring(0, 27) + '...'}
+          {game.short_description.substring(0, 25) + '...'}
         </div>
         <div className={gameFooter}>
           <div>

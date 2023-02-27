@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const librarySlice = createSlice({
   name: 'library',
   initialState: {
-    libraryList: ['452']
+    libraryList: []
   },
   reducers: {
     addGameToLibrary(state, action) {

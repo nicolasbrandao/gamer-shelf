@@ -12,7 +12,7 @@ const Skeleton = ({ times }) => {
     'opacity-70',
     'rounded',
     'w-[250px]',
-    'h-[220px]',
+    'h-[300px]',
     'flex-auto',
     'shadow-2xl'    
   )

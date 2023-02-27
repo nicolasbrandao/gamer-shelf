@@ -1,4 +1,5 @@
 import { Dropdown } from './'
+import { useSelector } from 'react-redux'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import { dropDownContent } from '../constants'
@@ -7,6 +8,18 @@ import { IoGameControllerOutline } from 'react-icons/io5'
 
 
 const Navbar = () => {
+  const navMenus = dropDownContent.map(item => {
+    return (
+      <li key={item.id}>
+        <Dropdown data={item} />
+      </li>
+    )
+  })
+
+  const libraryLength = useSelector((state) => {
+    return state.library.libraryList.length < 10 ? state.library.libraryList.length : '9+'
+  });
+
   const navbar = classNames(
     'flex',
     'justify-between',
@@ -55,20 +68,14 @@ const Navbar = () => {
     'right-2',
     'h-[18px]',
     'w-[18px]',
-    'text-center',
     'text-[10px]',
+    'justify-center',
+    'items-center',
     'border-2',
-    'border-frg1'
+    'border-frg1',
+    libraryLength === 0 ? 'hidden' : 'flex'
   )
   
-  const navMenus = dropDownContent.map(item => {
-    return (
-      <li key={item.id}>
-        <Dropdown data={item} />
-      </li>
-    )
-  })
-
   return (
     <nav className={navbar}>
       
@@ -84,7 +91,7 @@ const Navbar = () => {
           <li>
             <Link to='/library'>
               <VscLibrary className={libraryIcon} />
-              <div className={libCounter}>88</div>
+              <div className={libCounter}>{libraryLength}</div>
             </Link>
           </li>
         </ul>
