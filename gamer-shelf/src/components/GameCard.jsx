@@ -1,4 +1,5 @@
 import classNames from "classnames"
+import { toast } from 'react-toastify'
 import { useDispatch } from "react-redux";
 import { addGameToLibrary } from '../store'
 import { GoPlus, GoBrowser } from "react-icons/go"
@@ -10,6 +11,16 @@ const GameCard = ({game}) => {
 
   const handleAddGame = (gameID) => {
     dispatch(addGameToLibrary(gameID))
+    toast.info(`${game.title} added to library`, {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
   }
 
   const gameContainer = classNames(

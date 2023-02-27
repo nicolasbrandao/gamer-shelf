@@ -1,5 +1,7 @@
 import classNames from "classnames"
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Navbar, GamesList, LibraryList } from "./components"
 
 const App = () => {
@@ -16,6 +18,18 @@ const App = () => {
             <Route path={'/library'} element={<LibraryList />} />
           </Routes>
         </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
       </div>
     </BrowserRouter>
   )
