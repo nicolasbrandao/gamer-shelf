@@ -6,13 +6,16 @@ const librarySlice = createSlice({
     libraryList: []
   },
   reducers: {
-    addGameToLibrary(state, action) {
+    toggleGameInLibrary(state, action) {
       if (!state.libraryList.includes(action.payload)) {
         state.libraryList.push(action.payload);
+      } else {
+        const index = state.libraryList.indexOf(action.payload)
+        state.libraryList.splice(index, 1)
       }
     }
   }
 })
 
-export const { addGameToLibrary } = librarySlice.actions;
+export const { toggleGameInLibrary } = librarySlice.actions;
 export const libraryReducer = librarySlice.reducer;

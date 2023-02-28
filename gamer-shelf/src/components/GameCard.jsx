@@ -1,26 +1,44 @@
 import classNames from "classnames"
 import { toast } from 'react-toastify'
-import { useDispatch } from "react-redux";
-import { addGameToLibrary } from '../store'
-import { GoPlus, GoBrowser } from "react-icons/go"
+import { useDispatch, useSelector } from "react-redux";
+import { toggleGameInLibrary } from '../store'
+import { GoPlus, GoDash, GoBrowser } from "react-icons/go"
 import { FaWindows } from "react-icons/fa"
 
 const GameCard = ({game}) => {
   const dispatch = useDispatch();
-
+  const { libraryList } = useSelector((state) => {
+    return {
+      libraryList: state.library.libraryList
+    }
+  })
 
   const handleAddGame = (gameID) => {
-    dispatch(addGameToLibrary(gameID))
-    toast.info(`${game.title} added to library`, {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
+    if (libraryList.includes(gameID)) {
+      toast.error(`${game.title} removed from library`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+    } else {
+      toast.success(`${game.title} added to library`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
       });
+    }
+
+    dispatch(toggleGameInLibrary(gameID))
   }
 
   const gameContainer = classNames(
@@ -102,6 +120,10 @@ const GameCard = ({game}) => {
     infoContent = <GoBrowser />;
   }
 
+  let toggleLibraryIcon = libraryList.includes(game.id) ? 
+    <GoDash className={addButton} onClick={() => handleAddGame(game.id)} /> : 
+    <GoPlus className={addButton} onClick={() => handleAddGame(game.id)} />
+
   return (
     <div className={gameContainer}>
       <div>
@@ -116,7 +138,7 @@ const GameCard = ({game}) => {
         </div>
         <div className={gameFooter}>
           <div>
-            <GoPlus className={addButton} onClick={() => handleAddGame(game.id)} />
+            {toggleLibraryIcon}
           </div>
           <div className={gameInfo}>
             <div className={gameGenre}>{game.genre}</div>

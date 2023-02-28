@@ -14,7 +14,7 @@ const GamesList = () => {
     'w-[60rem]',
   )
 
-  const { data, error, isLoading } = useFetchGamesQuery();
+  const { data, error, isLoading } = useFetchGamesQuery({});
 
   let content;
   if (isLoading) {

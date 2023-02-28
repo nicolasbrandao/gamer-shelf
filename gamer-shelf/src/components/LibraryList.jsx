@@ -10,7 +10,7 @@ const LibraryList = () => {
     }
   })
 
-  const { data, error, isLoading } = useFetchGamesQuery();
+  const { data, error, isLoading } = useFetchGamesQuery({});
 
   let content;
   if (isLoading) {

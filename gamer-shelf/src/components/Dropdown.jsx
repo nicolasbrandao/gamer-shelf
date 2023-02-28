@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { toggle } from '../store'
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
+import { useRef, useEffect } from "react";
 
 const Dropdown = ({data}) => {
   const dispatch = useDispatch();
@@ -9,6 +10,22 @@ const Dropdown = ({data}) => {
   const isOpen = useSelector((state) => {
     return state.dropdowns.isOpen;
   })
+
+  const divEl = useRef(null);
+
+  useEffect(() => {
+    const handler = (event) => {
+      if (!divEl.current.contains(event.target)) {
+        dispatch(toggle(''));
+      }
+    };
+  
+    document.addEventListener('mousedown', handler);
+  
+    return () => {
+      document.removeEventListener('mousedown', handler);
+    };
+  }, [dispatch, divEl]);
 
   const handleClick = (dropDownID) => {
     dispatch(toggle(dropDownID));
@@ -39,8 +56,8 @@ const Dropdown = ({data}) => {
   const iconContent = isOpen === data.id ? <GoChevronUp className={menuIcon} /> : <GoChevronDown className={menuIcon} />
 
   return (
-    <div onClick={() => handleClick(data.id)}>
-      <div className={menuTitle}>
+    <div ref={divEl}>
+      <div className={menuTitle} onClick={() => handleClick(data.id)}>
         {data.title} {iconContent}
       </div>
       <div className={menuContainer}>
