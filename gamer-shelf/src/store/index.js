@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
-import { dropDownsReducer, toggle } from './slices/dropDownSlice'
+import { dropDownsReducer, toggle, updateSelection } from './slices/dropDownSlice'
 import { libraryReducer, toggleGameInLibrary } from './slices/librarySlice'
 import { gamesApi } from './apis/gamesApi'
 import { gitHubStatsApi } from './apis/gitHubStatsApi'
@@ -22,6 +22,6 @@ export const store = configureStore({
 
 setupListeners(store.dispatch)
 
-export { toggle, toggleGameInLibrary }
+export { toggle, toggleGameInLibrary, updateSelection }
 export { useFetchGamesQuery } from './apis/gamesApi'
 export { useFetchGitHubStatsQuery } from './apis/gitHubStatsApi'

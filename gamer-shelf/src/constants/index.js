@@ -20,7 +20,7 @@ export const dropDownContent = [
         title: 'Anime'
       },
       {
-        id: 'battle_royale',
+        id: 'battle-royale',
         title: 'Battle Royale'
       },
       {
@@ -36,7 +36,7 @@ export const dropDownContent = [
         title: 'Sci-Fi'
       },
       {
-        id: 'card_games',
+        id: 'card',
         title: 'Card Games'
       },
       {
@@ -55,56 +55,6 @@ export const dropDownContent = [
         id: 'sports',
         title: 'Sports'
       },
-      {
-        id: 'free-to-play',
-        title: 'Free-To-Play Games'
-      },
     ],
   },
-  {
-    id: 'browser_games',
-    title: 'Browser Games',
-    items: [
-      {
-        id: 'mmorpg',
-        title: 'MMORPG'
-      },
-      {
-        id: 'shooter',
-        title: 'Shooter'
-      },
-      {
-        id: 'anime',
-        title: 'Anime'
-      },
-      {
-        id: 'strategy',
-        title: 'Strategy'
-      },
-      {
-        id: 'fantasy',
-        title: 'Fantasy'
-      },
-      {
-        id: 'sci-fi',
-        title: 'Sci-Fi'
-      },
-      {
-        id: 'racing',
-        title: 'Racing'
-      },
-      {
-        id: 'social',
-        title: 'Social'
-      },
-      {
-        id: 'sports',
-        title: 'Sports'
-      },
-      {
-        id: 'browser_games',
-        title: 'Browser Games'
-      },
-    ]
-  }
 ]

@@ -1,4 +1,5 @@
 export { default as Dropdown } from './Dropdown'
+export { default as FiltersHeader } from './FiltersHeader'
 export { default as Footer } from './Footer'
 export { default as GameCard } from './GameCard'
 export { default as GamesList } from './GamesList'

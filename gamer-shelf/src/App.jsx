@@ -8,6 +8,7 @@ const App = () => {
   const appContainer = classNames(
     'font-montserrat'
   )
+  
   return (
     <BrowserRouter>
       <div className={appContainer}>
@@ -22,7 +23,7 @@ const App = () => {
           <Footer />
         </div>
         <ToastContainer
-          position="top-right"
+          position="bottom-right"
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}

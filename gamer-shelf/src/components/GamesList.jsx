@@ -1,11 +1,14 @@
 import { useFetchGamesQuery } from "../store";
-import { GameCard, Skeleton } from "./";
+import { GameCard, Skeleton, FiltersHeader } from "./";
 import classNames from "classnames";
+import { useSelector } from "react-redux";
 
 
 const GamesList = () => {
+  const category = useSelector((state) => state.dropdowns.currentSelection);
+  const { data, error, isLoading } = useFetchGamesQuery(category);
+
   const gamesList = classNames(
-    'mt-20',
     'mx-auto',
     'flex',
     'flex-wrap',
@@ -13,8 +16,6 @@ const GamesList = () => {
     'p-4',
     'w-[60rem]',
   )
-
-  const { data, error, isLoading } = useFetchGamesQuery({});
 
   let content;
   if (isLoading) {
@@ -28,9 +29,12 @@ const GamesList = () => {
   }
 
   return (
-    <div className={gamesList}>
-      {content}
-    </div>
+    <div>
+      <FiltersHeader />
+      <div className={gamesList}>
+        {content}
+      </div>
+    </div> 
   )
 }
 

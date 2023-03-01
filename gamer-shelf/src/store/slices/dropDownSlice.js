@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const dropDownSlice = createSlice({
   name: 'dropdowns',
   initialState: {
-    isOpen: ''
+    isOpen: '',
+    currentSelection: ''
   },
   reducers: {
     toggle(state, action) {
@@ -13,9 +14,12 @@ const dropDownSlice = createSlice({
       } else {
         state.isOpen = action.payload;
       }
+    },
+    updateSelection: (state, action) => {
+      state.currentSelection = action.payload
     }
   }
 })
 
-export const { toggle } = dropDownSlice.actions;
+export const { toggle, updateSelection } = dropDownSlice.actions;
 export const dropDownsReducer = dropDownSlice.reducer;
