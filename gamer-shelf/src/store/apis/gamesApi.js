@@ -29,10 +29,33 @@ const gamesApi = createApi({
           error: result?.error,
           isLoading: !result
         })
+      }),
+      fetchGameDetails: builder.query({
+        query: (id) => {
+          const queryParams = {
+            headers: {
+              'X-RapidAPI-Key': 'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
+              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
+            },
+            method: 'GET'
+          };
+          if (id) {
+            queryParams.params = { id: id };
+          }
+          return {
+            url: '/game',
+            ...queryParams
+          };
+        },
+        provides: (result) => ({
+          data: result?.data,
+          error: result?.error,
+          isLoading: !result
+        })
       })
     }
   }
 })
 
-export const { useFetchGamesQuery } = gamesApi;
+export const { useFetchGamesQuery, useFetchGameDetailsQuery } = gamesApi;
 export { gamesApi };

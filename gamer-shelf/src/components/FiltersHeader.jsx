@@ -1,41 +1,54 @@
 import classNames from 'classnames'
-import { GoChevronDown, GoChevronUp } from "react-icons/go";
+import { filtersContent } from '../constants'
+import { FiltersDropdown, Dropdown } from './'
+import { GoSettings } from 'react-icons/go'
 
-const FiltersHeader = ({data}) => {
+const FiltersHeader = () => {
+  const filtersMenus = filtersContent.map(item => {
+    return (
+      <li key={item.id}>
+        <FiltersDropdown data={item} />
+      </li>
+    )
+  })
 
   const filtersContainer = classNames(
     'mt-20',
     'flex',
-    'gap-8',
+    'gap-4',
     'w-full',
     'max-w-[50rem]',
     'mx-auto',
-    'justify-between',
+    'items-center',
+    'justify-center',
     'border'
   )
 
-  const dropdownContainer = classNames(
+  const filtersList = classNames(
+    'list-none',
     'flex',
-    'gap-2'
+    'flex-row',
+    'items-center',
+    'justify-center',
+    'gap-[6rem]'
+  )
+  
+  const advancedWrapper = classNames(
+    'flex',
+    'items-center',
+    'gap-2',
+    'cursor-pointer'
   )
 
   return (
     <div className={filtersContainer}>
-      <div className={dropdownContainer}>
-        <span>Platform:</span>
-        <div>All platforms</div>
-      </div>
-      <div className={dropdownContainer}>
-        <span>Genre/Tag:</span>
-        <div>All Genres</div>
-      </div>
-      <div className={dropdownContainer}>
-        <span>Sort By:</span>
-        <div>Relevance</div>
-      </div>
-      <div className={dropdownContainer}>
-        <span>Advanced Filters</span>
-      </div>
+      <ul className={filtersList}>
+        {filtersMenus}
+        <li className={advancedWrapper}>
+          Advanced Filters
+          <GoSettings />
+        </li>
+      </ul>
     </div>
   )
 }

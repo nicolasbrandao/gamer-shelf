@@ -47,8 +47,8 @@ const GameCard = ({game}) => {
     'bg-frg1',
     'items-center',
     'rounded',
-    'max-w-[250px]',
-    'w-[250px]',
+    'max-w-[280px]',
+    'w-[280px]',
     'h-[300px]',
     'flex-auto',
     'cursor-pointer',
@@ -83,6 +83,12 @@ const GameCard = ({game}) => {
     'items-center',
     'justify-between',
     'w-full'
+  )
+
+  const buttonContainer = classNames(
+    'flex',
+    'items-center',
+    'justify-center'
   )
 
   const addButton = classNames(
@@ -137,7 +143,7 @@ const GameCard = ({game}) => {
           {game.short_description.substring(0, 25) + '...'}
         </div>
         <div className={gameFooter}>
-          <div>
+          <div className={buttonContainer}>
             {toggleLibraryIcon}
           </div>
           <div className={gameInfo}>
