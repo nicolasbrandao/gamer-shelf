@@ -26,7 +26,7 @@ const GamesList = () => {
     content = <div>Error loading games.</div>
   } else {
     content = data.map(game => {
-      return <GameCard key={game.id} game={game}/>
+      return <GameCard key={game.id} game={game}/> 
     })
   }
 

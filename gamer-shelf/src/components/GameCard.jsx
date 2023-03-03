@@ -1,9 +1,10 @@
 import classNames from "classnames"
 import { toast } from 'react-toastify'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"
 import { toggleGameInLibrary } from '../store'
 import { GoPlus, GoDash, GoBrowser } from "react-icons/go"
 import { FaWindows } from "react-icons/fa"
+import { Link } from 'react-router-dom'
 
 const GameCard = ({game}) => {
   const dispatch = useDispatch();
@@ -51,21 +52,28 @@ const GameCard = ({game}) => {
     'w-[280px]',
     'h-[300px]',
     'flex-auto',
-    'cursor-pointer',
     'shadow-2xl'
+  )
+
+  const gameLink = classNames(
+    'flex',
+    'flex-col',
+    'gap-4'
   )
 
   const gameTitle = classNames(
     'text-center',
     'text-txt1',
     'text-xl',
-    'font-bold'
+    'font-bold',
+    'cursor-pointer',
   )
 
   const gameThumbnail = classNames(
     'w-full',
     'rounded-t',
-    'overflow-hidden'
+    'overflow-hidden',
+    'cursor-pointer',
   )
 
   const gameBody = classNames(
@@ -88,7 +96,8 @@ const GameCard = ({game}) => {
   const buttonContainer = classNames(
     'flex',
     'items-center',
-    'justify-center'
+    'justify-center',
+    'cursor-pointer',
   )
 
   const addButton = classNames(
@@ -131,28 +140,31 @@ const GameCard = ({game}) => {
     <GoPlus className={addButton} onClick={() => handleAddGame(game.id)} />
 
   return (
-    <div className={gameContainer}>
-      <div>
-        <img className={gameThumbnail} src={game.thumbnail} alt={game.title} />
-      </div>
-      <div className={gameBody}>
-        <div className={gameTitle}>
-          {game.title}
-        </div>
-        <div className={gameDescription}>
-          {game.short_description.substring(0, 25) + '...'}
-        </div>
-        <div className={gameFooter}>
-          <div className={buttonContainer}>
-            {toggleLibraryIcon}
+    
+      <div className={gameContainer}>
+        <Link className={gameLink} to={`/game/${game.id}`}>
+          <div>
+            <img className={gameThumbnail} src={game.thumbnail} alt={game.title} />
           </div>
-          <div className={gameInfo}>
-            <div className={gameGenre}>{game.genre}</div>
-            <div>{infoContent}</div>
+          <div className={gameTitle}>
+              {game.title}
+          </div>
+        </Link>
+        <div className={gameBody}>
+          <div className={gameDescription}>
+            {game.short_description.substring(0, 25) + '...'}
+          </div>
+          <div className={gameFooter}>
+            <div className={buttonContainer}>
+              {toggleLibraryIcon}
+            </div>
+            <div className={gameInfo}>
+              <div className={gameGenre}>{game.genre}</div>
+              <div>{infoContent}</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   )
 }
 

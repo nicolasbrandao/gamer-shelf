@@ -2,7 +2,7 @@ import classNames from "classnames"
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { Navbar, GamesList, LibraryList, Footer } from "./components"
+import { Navbar, GameDetails, GamesList, LibraryList, Footer } from "./components"
 
 const App = () => {
   const appContainer = classNames(
@@ -17,6 +17,7 @@ const App = () => {
           <Routes>
             <Route exact path={'/'} element={<GamesList />} />
             <Route path={'/library'} element={<LibraryList />} />
+            <Route path={'/game/:gameId'} element={<GameDetails />}/>
           </Routes>
         </div>
         <div>

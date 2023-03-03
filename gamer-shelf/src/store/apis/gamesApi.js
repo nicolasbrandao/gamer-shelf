@@ -32,6 +32,7 @@ const gamesApi = createApi({
       }),
       fetchGameDetails: builder.query({
         query: (id) => {
+          // ID CREATED FOR TEST ONLY SHOULD BE PASSED AS id PARAMETER 
           const queryParams = {
             headers: {
               'X-RapidAPI-Key': 'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
