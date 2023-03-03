@@ -8,13 +8,20 @@ import { Navbar, GameDetails, Footer } from "./components"
 const App = () => {
   const appContainer = classNames(
     'font-montserrat',
-    'pt-20'
+    'pt-20',
+    'w-[60rem]',
+    'mx-auto',
+    'min-h-screen',
+    'flex',
+    'flex-col',
+    'gap-6',
+    'justify-between',
   )
   
   return (
     <BrowserRouter>
+      <Navbar />
       <div className={appContainer}>
-        <Navbar />
         <main>
           <Routes>
             <Route exact path={'/'} element={<HomePage />} />

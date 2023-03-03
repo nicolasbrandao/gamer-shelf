@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import { AiOutlineStar } from 'react-icons/ai'
 import { BiGitRepoForked } from 'react-icons/bi'
 import { useFetchGitHubStatsQuery } from '../store'
+import logo from '../assets/api-logo.png'
 
 const Footer = () => {
   const { data, error, isLoading } = useFetchGitHubStatsQuery();
@@ -12,8 +13,20 @@ const Footer = () => {
     'items-center',
     'relative',
     'bottom-0',
+    'w-full',
+    'h-[10rem]',
     'max-w-[40rem]',
     'mx-auto'
+  )
+  
+  const logoContainer = classNames(
+    'flex',
+    'flex-col',
+    'items-center'
+  )
+
+  const logoImg = classNames(
+    'h-[80px]'
   )
 
   const statsWrapper = classNames(
@@ -30,8 +43,9 @@ const Footer = () => {
 
   return (
     <footer className={footerContainer}>
-      <div>
-        Free-to-game API
+      <div className={logoContainer}>
+        <img className={logoImg} src={logo} alt="Free-to-game API" />
+        Free-to-Game API
       </div>
       <div>
         <p>Designed & Built by Nícolas Brandão</p>
@@ -48,7 +62,7 @@ const Footer = () => {
                 </div>
               </>
             ) : (
-              <p>Loading statistics...</p>
+              <p>Loading stats...</p>
           )}
         </div>
       </div>

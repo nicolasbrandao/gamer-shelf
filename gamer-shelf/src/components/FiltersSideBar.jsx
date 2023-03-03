@@ -4,7 +4,6 @@ import { CheckBoxMenu } from './'
 
 const FiltersSideBar = () => {
   const filtersContainer = classNames(
-    'border',
     'w-[280px]',
     'p-4',
   )

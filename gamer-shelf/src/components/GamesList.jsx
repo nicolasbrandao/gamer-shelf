@@ -14,8 +14,7 @@ const GamesList = () => {
     'flex-wrap',
     'justify-between',
     'gap-10',
-    'p-4',
-    'border'
+    'p-4'
   )
 
   let content;

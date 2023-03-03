@@ -1,6 +1,7 @@
 import classNames from "classnames"
 import { CgTrash } from 'react-icons/cg'
 import { SlSettings } from 'react-icons/sl'
+import { Link } from "react-router-dom"
 
 const LibraryGameCard = ({game}) => {
 
@@ -19,6 +20,7 @@ const LibraryGameCard = ({game}) => {
 
   const gameHeader = classNames(
     'flex',
+    'items-center',
     'gap-2'
   )
 
@@ -35,10 +37,10 @@ const LibraryGameCard = ({game}) => {
 
   return (
     <div className={gameContainer}>
-      <div className={gameHeader}>
+      <Link to={`/game/${game.id}`} className={gameHeader}>
         <img className={gameThumbnail} src={game.thumbnail} alt={game.title} />
         <p className={gameTitle}>{game.title}</p>
-      </div>
+      </Link>
       <div>Currently Playing</div>
       <div>
         <SlSettings />
