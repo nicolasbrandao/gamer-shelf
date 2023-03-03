@@ -1,29 +1,32 @@
 import classNames from "classnames"
 import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { Navbar, GameDetails, GamesList, LibraryList, Footer } from "./components"
+import { HomePage, AdvancedFiltersPage, LibraryPage } from "./pages"
+import { Navbar, GameDetails, Footer } from "./components"
 
 const App = () => {
   const appContainer = classNames(
-    'font-montserrat'
+    'font-montserrat',
+    'pt-20'
   )
   
   return (
     <BrowserRouter>
       <div className={appContainer}>
         <Navbar />
-        <div>
+        <main>
           <Routes>
-            <Route exact path={'/'} element={<GamesList />} />
-            <Route path={'/library'} element={<LibraryList />} />
+            <Route exact path={'/'} element={<HomePage />} />
+            <Route path={'/library'} element={<LibraryPage />} />
             <Route path={'/game/:gameId'} element={<GameDetails />}/>
+            <Route path={'/filters'} element={<AdvancedFiltersPage />}/>
           </Routes>
-        </div>
-        <div>
-          <Footer />
-        </div>
-        <ToastContainer
+        </main>
+        <Footer />
+      </div>
+      
+      <ToastContainer
           position="bottom-right"
           autoClose={5000}
           hideProgressBar={false}
@@ -35,7 +38,6 @@ const App = () => {
           pauseOnHover
           theme="dark"
         />
-      </div>
     </BrowserRouter>
   )
 }

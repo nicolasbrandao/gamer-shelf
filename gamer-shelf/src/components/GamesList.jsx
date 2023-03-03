@@ -1,5 +1,5 @@
 import { useFetchGamesQuery } from "../store";
-import { GameCard, Skeleton, FiltersHeader, FiltersSideBar } from "./";
+import { GameCard, Skeleton } from "./";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
 
@@ -15,7 +15,6 @@ const GamesList = () => {
     'justify-between',
     'gap-10',
     'p-4',
-    'w-[60rem]',
     'border'
   )
 
@@ -31,15 +30,11 @@ const GamesList = () => {
   }
 
   return (
-    <div>
-      <FiltersHeader />
-      <div className="flex">
-        <FiltersSideBar />
-        <div className={gamesList}>
-          {content}
-        </div>
+    <div className="flex">
+      <div className={gamesList}>
+        {content}
       </div>
-    </div> 
+    </div>
   )
 }
 

@@ -25,7 +25,6 @@ const LibraryList = () => {
   }
 
   const gamesList = classNames(
-    'mt-20',
     'mx-auto',
     'flex',
     'flex-wrap',

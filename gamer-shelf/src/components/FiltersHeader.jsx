@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import { filtersContent } from '../constants'
 import { FiltersDropdown, Dropdown } from './'
+import { Link } from 'react-router-dom'
 import { GoSettings } from 'react-icons/go'
 
 const FiltersHeader = () => {
@@ -13,7 +14,6 @@ const FiltersHeader = () => {
   })
 
   const filtersContainer = classNames(
-    'mt-20',
     'flex',
     'gap-4',
     'w-full',
@@ -43,9 +43,11 @@ const FiltersHeader = () => {
     <div className={filtersContainer}>
       <ul className={filtersList}>
         {filtersMenus}
-        <li className={advancedWrapper}>
-          Advanced Filters
-          <GoSettings />
+        <li>
+          <Link className={advancedWrapper} to={'/filters'}>
+            Advanced Filters
+            <GoSettings />
+          </Link>
         </li>
       </ul>
     </div>
