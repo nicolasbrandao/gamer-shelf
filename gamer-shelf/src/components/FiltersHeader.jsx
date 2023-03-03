@@ -21,7 +21,6 @@ const FiltersHeader = () => {
     'mx-auto',
     'items-center',
     'justify-center',
-    'border'
   )
 
   const filtersList = classNames(

@@ -1,5 +1,5 @@
 import { useFetchGamesQuery } from "../store";
-import { GameCard, Skeleton, FiltersHeader } from "./";
+import { GameCard, Skeleton, FiltersHeader, FiltersSideBar } from "./";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
 
@@ -33,8 +33,11 @@ const GamesList = () => {
   return (
     <div>
       <FiltersHeader />
-      <div className={gamesList}>
-        {content}
+      <div className="flex">
+        <FiltersSideBar />
+        <div className={gamesList}>
+          {content}
+        </div>
       </div>
     </div> 
   )

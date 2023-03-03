@@ -1,6 +1,6 @@
 import classNames from "classnames"
 import { useSelector } from "react-redux"
-import { Skeleton, GameCard } from './'
+import { Skeleton, LibraryGameCard } from './'
 import { useFetchGamesQuery } from "../store"
 
 const LibraryList = () => {
@@ -20,7 +20,7 @@ const LibraryList = () => {
   } else {
     let filteredList = data.filter((item) => libraryList.includes(item.id))
     content = filteredList.map(game => {
-      return <GameCard key={game.id} game={game}/>
+      return <LibraryGameCard key={game.id} game={game}/>
     })
   }
 
