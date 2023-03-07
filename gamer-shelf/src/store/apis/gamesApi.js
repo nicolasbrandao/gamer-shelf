@@ -17,7 +17,7 @@ const gamesApi = createApi({
             method: 'GET'
           };
           if (category) {
-            queryParams.params = { category: category };
+            queryParams.params = {category: category};
           }
           return {
             url: '/games',
@@ -52,10 +52,33 @@ const gamesApi = createApi({
           error: result?.error,
           isLoading: !result
         })
+      }),
+      fetchFilteredGames: builder.query({
+        query: (tag) => {
+          const queryParams = {
+            headers: {
+              'X-RapidAPI-Key': 'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
+              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
+            },
+            method: 'GET'
+          };
+          if (tag) {
+            queryParams.params = { tag: tag };
+          }
+          return {
+            url: '/filter',
+            ...queryParams
+          };
+        },
+        provides: (result) => ({
+          data: result?.data,
+          error: result?.error,
+          isLoading: !result
+        })
       })
     }
   }
 })
 
-export const { useFetchGamesQuery, useFetchGameDetailsQuery } = gamesApi;
+export const { useFetchGamesQuery, useFetchGameDetailsQuery, useFetchFilteredGamesQuery } = gamesApi;
 export { gamesApi };

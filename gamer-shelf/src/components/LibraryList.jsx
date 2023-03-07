@@ -1,6 +1,7 @@
 import classNames from "classnames"
 import { useSelector } from "react-redux"
 import { Skeleton, LibraryGameCard } from './'
+import { VscFolderLibrary } from 'react-icons/vsc'
 import { useFetchGamesQuery } from "../store"
 
 const LibraryList = () => {
@@ -12,6 +13,13 @@ const LibraryList = () => {
 
   const { data, error, isLoading } = useFetchGamesQuery();
 
+  const promptContainer = classNames(
+    'flex',
+    'items-center',
+    'gap-4',
+    'text-4xl',
+  )
+
   let content;
   if (isLoading) {
     content = <Skeleton times={9} />
@@ -19,9 +27,18 @@ const LibraryList = () => {
     content = <div>Error loading games.</div>
   } else {
     let filteredList = data.filter((item) => libraryList.includes(item.id))
-    content = filteredList.map(game => {
-      return <LibraryGameCard key={game.id} game={game}/>
-    })
+    if (filteredList.length === 0) {
+      content = (
+        <div className={promptContainer}>
+          <VscFolderLibrary />
+          <span>Empty library</span>
+        </div>
+      )
+    } else {
+      content = filteredList.map(game => {
+        return <LibraryGameCard key={game.id} game={game}/>
+      })
+    }
   }
 
   const gamesList = classNames(
@@ -30,7 +47,7 @@ const LibraryList = () => {
     'flex-wrap',
     'gap-10',
     'p-4',
-    'w-[60rem]',
+    'w-[60rem]'
   )
 
   return (

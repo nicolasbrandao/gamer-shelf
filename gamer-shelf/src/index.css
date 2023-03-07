@@ -20,6 +20,11 @@
   scroll-behavior: smooth;
 }
 
+body {
+  color: var(--text);
+  background-color: var(--background);
+}
+
 ::-webkit-scrollbar {
   width:6px;
 }

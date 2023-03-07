@@ -4,11 +4,10 @@ const filtersSlice = createSlice({
   name: 'filters',
   initialState: {
     isOpen: '',
-    currentSelection: ''
+    currentSelection: 'shooter'
   },
   reducers: {
     toggleFilters(state, action) {
-      // Assumption: action.payload === 'dropdown item.id'
       if (state.isOpen === action.payload) {
         state.isOpen = ''
       } else {
@@ -16,10 +15,11 @@ const filtersSlice = createSlice({
       }
     },
     updateFiltersSelection: (state, action) => {
-      state.currentSelection = action.payload
+      state.currentSelection.push(action.payload); 
     }
   }
 })
 
 export const { toggleFilters, updateFiltersSelection } = filtersSlice.actions;
 export const filtersReducer = filtersSlice.reducer;
+

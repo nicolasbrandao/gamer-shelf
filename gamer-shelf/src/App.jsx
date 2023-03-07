@@ -1,6 +1,7 @@
 import classNames from "classnames"
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { HomePage, AdvancedFiltersPage, LibraryPage } from "./pages"
 import { Navbar, GameDetails, Footer } from "./components"

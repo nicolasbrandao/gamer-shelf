@@ -32,5 +32,5 @@ export {
   updateFiltersSelection 
 }
 
-export { useFetchGamesQuery, useFetchGameDetailsQuery } from './apis/gamesApi'
+export { useFetchGamesQuery, useFetchGameDetailsQuery, useFetchFilteredGamesQuery } from './apis/gamesApi'
 export { useFetchGitHubStatsQuery } from './apis/gitHubStatsApi'

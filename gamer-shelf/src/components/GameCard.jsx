@@ -3,6 +3,7 @@ import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from "react-redux"
 import { toggleGameInLibrary } from '../store'
 import { GoPlus, GoDash, GoBrowser } from "react-icons/go"
+import { CgAdd, CgCloseO } from "react-icons/cg"
 import { FaWindows } from "react-icons/fa"
 import { Link } from 'react-router-dom'
 
@@ -14,7 +15,7 @@ const GameCard = ({game}) => {
     }
   })
 
-  const handleAddGame = (gameID) => {
+  const handleToggleGame = (gameID) => {
     if (libraryList.includes(gameID)) {
       toast.error(`${game.title} removed from library`, {
         position: "bottom-right",
@@ -105,7 +106,6 @@ const GameCard = ({game}) => {
     'items-center',
     'justify-center',
     'rounded-full',
-    'bg-frg2',
     'text-xl'
   )
 
@@ -136,8 +136,8 @@ const GameCard = ({game}) => {
   }
 
   let toggleLibraryIcon = libraryList.includes(game.id) ? 
-    <GoDash className={addButton} onClick={() => handleAddGame(game.id)} /> : 
-    <GoPlus className={addButton} onClick={() => handleAddGame(game.id)} />
+    <CgCloseO className={addButton} onClick={() => handleToggleGame(game.id)} /> : 
+    <CgAdd className={addButton} onClick={() => handleToggleGame(game.id)} />
 
   return (
     

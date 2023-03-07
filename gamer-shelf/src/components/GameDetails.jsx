@@ -1,7 +1,10 @@
 import classNames from 'classnames'
 import { useFetchGameDetailsQuery } from '../store'
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
 import { Skeleton } from './'
+import { Carousel } from 'react-responsive-carousel'
+import { GoBrowser } from "react-icons/go"
+import { FaWindows } from "react-icons/fa"
 
 const GameDetails = () => {
   const { gameId } = useParams();
@@ -28,6 +31,21 @@ const GameDetails = () => {
     'rounded'
   )
 
+  const gameGenre = classNames(
+    'rounded',
+    'bg-frg2',
+    'px-1',
+    'text-sm',
+    'text-xs'
+  )
+
+  const shortInfo = classNames(
+    'flex',
+    'gap-2', 
+    'justify-end', 
+    'pt-2'
+  )
+
   const title = classNames(
     'font-bold',
     'text-2xl'
@@ -41,6 +59,20 @@ const GameDetails = () => {
     'text-sm'
   )
 
+  let plaftormContent;
+  if (data?.platform === 'Windows'){
+    plaftormContent = <FaWindows />
+  } else {
+    plaftormContent = <GoBrowser />;
+  }
+
+  let carousel = data?.screenshots.map(item => {
+    return (
+      <div key={item.id}>
+      <img src={item.image} />
+      </div>
+    )
+  })
 
   let content;
   if (isLoading) {
@@ -53,9 +85,9 @@ const GameDetails = () => {
         <div className={containerHeader}>
           <div>
             <img className={thumbnail} src={data.thumbnail} alt={data.title} />
-            <div>
-              <p className={subtext}>{data.genre}</p>
-              <p className={subtext}>{data.platform}</p>
+            <div className={shortInfo}>
+              <p className={gameGenre}>{data.genre}</p>
+              <p className={subtext}>{plaftormContent}</p>
             </div>
           </div>
           <div>
@@ -80,6 +112,11 @@ const GameDetails = () => {
           <p className={subtext}>{data.description}</p>
         </div>
 
+        <p className={subtitle}>Screenshots</p>
+        <Carousel>
+          {carousel}
+        </Carousel>
+  
         <div>
           <p className={subtitle}>Minimum System Requirements</p>
           <div>

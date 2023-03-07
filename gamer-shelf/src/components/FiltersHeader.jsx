@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { filtersContent } from '../constants'
-import { FiltersDropdown, Dropdown } from './'
+import { FiltersDropdown } from './'
 import { Link } from 'react-router-dom'
 import { GoSettings } from 'react-icons/go'
 

@@ -1,8 +1,17 @@
-import classNames from "classnames"
+import classNames from 'classnames'
 import { ImCheckboxUnchecked, ImCheckboxChecked } from 'react-icons/im'
+import { useSelector, useDispatch } from 'react-redux'
 
 const CheckBoxMenu = ({data}) => {
-  
+  const dispatch = useDispatch();
+  const { currentSelection } = useSelector((state) => {
+    return state.filters.currentSelection
+  })
+
+  const handleClick = () => {
+    
+  }
+
   const menuContainer = classNames(
     'bg-frg1',
     'rounded',

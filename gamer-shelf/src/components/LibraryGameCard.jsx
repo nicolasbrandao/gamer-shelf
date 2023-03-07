@@ -2,8 +2,45 @@ import classNames from "classnames"
 import { CgTrash } from 'react-icons/cg'
 import { SlSettings } from 'react-icons/sl'
 import { Link } from "react-router-dom"
+import { toast } from 'react-toastify'
+import { toggleGameInLibrary } from '../store'
+import { useDispatch, useSelector } from "react-redux"
 
 const LibraryGameCard = ({game}) => {
+  const dispatch = useDispatch();
+  const { libraryList } = useSelector((state) => {
+    return {
+      libraryList: state.library.libraryList
+    }
+  })
+
+  const handleToggleGame = (gameID) => {
+    if (libraryList.includes(gameID)) {
+      toast.error(`${game.title} removed from library`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+    } else {
+      toast.success(`${game.title} added to library`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+
+    dispatch(toggleGameInLibrary(gameID))
+  }
 
   const gameContainer = classNames(
     'flex',
@@ -35,6 +72,11 @@ const LibraryGameCard = ({game}) => {
     'text-center'
   )
 
+  const icon = classNames(
+    'text-xl',
+    'cursor-pointer'
+  )
+
   return (
     <div className={gameContainer}>
       <Link to={`/game/${game.id}`} className={gameHeader}>
@@ -43,10 +85,10 @@ const LibraryGameCard = ({game}) => {
       </Link>
       <div>Currently Playing</div>
       <div>
-        <SlSettings />
+        <SlSettings className={icon} />
       </div>
       <div>
-        <CgTrash />
+        <CgTrash className={icon} onClick={() => handleToggleGame(game.id)} />
       </div>
     </div>
   )

@@ -5,7 +5,6 @@ const AdvancedFiltersPage = () => {
   const mainContainer = classNames(
     'flex',
     'w-[60rem]',
-    'mt-[5rem]',
     'mx-auto'
   )
 

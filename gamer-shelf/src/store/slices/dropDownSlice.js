@@ -8,7 +8,6 @@ const dropDownSlice = createSlice({
   },
   reducers: {
     toggle(state, action) {
-      // Assumption: action.payload === 'dropdown item.id'
       if (state.isOpen === action.payload) {
         state.isOpen = '';
       } else {

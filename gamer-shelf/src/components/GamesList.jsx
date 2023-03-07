@@ -1,12 +1,14 @@
-import { useFetchGamesQuery } from "../store";
+import { useFetchGamesQuery, useFetchFilteredGamesQuery } from "../store";
 import { GameCard, Skeleton } from "./";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
 
 
 const GamesList = () => {
-  const params = useSelector((state) => state.dropdowns.currentSelection);
-  const { data, error, isLoading } = useFetchGamesQuery(params);
+  const navParams = useSelector((state) => state.dropdowns.currentSelection);
+  const filtersParams = useSelector((state) => state.filters.currentSelection);
+  // const { data, error, isLoading } = useFetchGamesQuery(navParams);
+  const { data, error, isLoading } = useFetchFilteredGamesQuery(filtersParams);
 
   const gamesList = classNames(
     'mx-auto',
