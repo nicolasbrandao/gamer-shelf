@@ -1,15 +1,18 @@
 import classNames from 'classnames'
 import { ImCheckboxUnchecked, ImCheckboxChecked } from 'react-icons/im'
+import { updateFiltersSelection } from '../store'
 import { useSelector, useDispatch } from 'react-redux'
 
 const CheckBoxMenu = ({data}) => {
   const dispatch = useDispatch();
   const { currentSelection } = useSelector((state) => {
-    return state.filters.currentSelection
+    return {
+      currentSelection: state.filters.currentSelection
+    }
   })
 
-  const handleClick = () => {
-    
+  const handleClick = (tag) => {
+    dispatch(updateFiltersSelection(tag))
   }
 
   const menuContainer = classNames(
@@ -33,9 +36,13 @@ const CheckBoxMenu = ({data}) => {
   )
 
   const checkBoxItems = data.items.map(item => {
+    const icon = currentSelection.includes(item.id) ?
+    <ImCheckboxChecked /> :
+    <ImCheckboxUnchecked />
+
     return (
-      <li key={item.id} className={menuItemsContainer}>
-        <ImCheckboxChecked />{item.title}
+      <li key={item.id} className={menuItemsContainer} onClick={() => handleClick(item.id)}>
+        {icon}{item.title}
       </li>
     )
   })

@@ -407,7 +407,7 @@ export const advancedFiltersContent = [
       },
       {
         id: 'horror',
-        title: 'Horros',  
+        title: 'Horror',  
       },
     ]
   },

@@ -4,7 +4,7 @@ const filtersSlice = createSlice({
   name: 'filters',
   initialState: {
     isOpen: '',
-    currentSelection: 'shooter'
+    currentSelection: ['shooter']
   },
   reducers: {
     toggleFilters(state, action) {
@@ -15,7 +15,13 @@ const filtersSlice = createSlice({
       }
     },
     updateFiltersSelection: (state, action) => {
-      state.currentSelection.push(action.payload); 
+      if (state.currentSelection.includes(action.payload)) {
+        const index = state.currentSelection.indexOf(action.payload)
+        state.currentSelection.splice(index, 1)
+        
+      } else {
+        state.currentSelection.push(action.payload); 
+      }
     }
   }
 })

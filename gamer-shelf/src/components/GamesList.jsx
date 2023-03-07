@@ -8,7 +8,7 @@ const GamesList = () => {
   const navParams = useSelector((state) => state.dropdowns.currentSelection);
   const filtersParams = useSelector((state) => state.filters.currentSelection);
   // const { data, error, isLoading } = useFetchGamesQuery(navParams);
-  const { data, error, isLoading } = useFetchFilteredGamesQuery(filtersParams);
+  const { data, error, isLoading } = useFetchFilteredGamesQuery(filtersParams.join('.'));
 
   const gamesList = classNames(
     'mx-auto',
@@ -25,9 +25,11 @@ const GamesList = () => {
   } else if (error) {
     content = <div>Error loading games.</div>
   } else {
-    content = data.map(game => {
-      return <GameCard key={game.id} game={game}/> 
-    })
+    content = data?.status === 0 ? 
+      'NO MATCH' :
+      data?.map(game => {
+        return <GameCard key={game.id} game={game}/> 
+      })
   }
 
   return (
