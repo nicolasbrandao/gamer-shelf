@@ -4,7 +4,9 @@ const filtersSlice = createSlice({
   name: 'filters',
   initialState: {
     isOpen: '',
-    currentSelection: ['shooter']
+    platform: 'all',
+    category: '',
+    tags: []
   },
   reducers: {
     toggleFilters(state, action) {
@@ -15,17 +17,23 @@ const filtersSlice = createSlice({
       }
     },
     updateFiltersSelection: (state, action) => {
-      if (state.currentSelection.includes(action.payload)) {
-        const index = state.currentSelection.indexOf(action.payload)
-        state.currentSelection.splice(index, 1)
+      if (state.tags.includes(action.payload)) {
+        const index = state.tags.indexOf(action.payload)
+        state.tags.splice(index, 1)
         
       } else {
-        state.currentSelection.push(action.payload); 
+        state.tags.push(action.payload); 
       }
+    },
+    updateCategorySelection: (state, action) => {
+      state.category = action.payload
+    },
+    updatePlatformSelection: (state, action) => {
+      state.platform = action.payload
     }
   }
 })
 
-export const { toggleFilters, updateFiltersSelection } = filtersSlice.actions;
+export const { toggleFilters, updateFiltersSelection, updateCategorySelection, updatePlatformSelection } = filtersSlice.actions;
 export const filtersReducer = filtersSlice.reducer;
 

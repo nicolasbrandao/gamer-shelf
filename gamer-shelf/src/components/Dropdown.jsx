@@ -1,6 +1,6 @@
 import classNames from "classnames"
 import { useDispatch, useSelector } from "react-redux";
-import { toggle, updateSelection } from '../store'
+import { toggleFilters, updateCategorySelection } from '../store'
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { useRef, useEffect } from "react";
 
@@ -8,7 +8,7 @@ const Dropdown = ({data}) => {
   const dispatch = useDispatch();
 
   const isOpen = useSelector((state) => {
-    return state.dropdowns.isOpen;
+    return state.filters.isOpen;
   })
 
   const divEl = useRef(null);
@@ -16,7 +16,7 @@ const Dropdown = ({data}) => {
   useEffect(() => {
     const handler = (event) => {
       if (!divEl.current.contains(event.target)) {
-        dispatch(toggle(''));
+        dispatch(toggleFilters(''));
       }
     };
   
@@ -28,12 +28,12 @@ const Dropdown = ({data}) => {
   }, [dispatch, divEl]);
 
   const handleClick = (dropDownID) => {
-    dispatch(toggle(dropDownID));
+    dispatch(toggleFilters(dropDownID));
   }
 
   const handleSelect = (item) => {
-    dispatch(toggle(''));
-    dispatch(updateSelection(item.id))
+    dispatch(toggleFilters(''));
+    dispatch(updateCategorySelection(item.id))
   }
 
   const menuTitle = classNames(

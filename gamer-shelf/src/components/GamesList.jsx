@@ -5,19 +5,22 @@ import { useSelector } from "react-redux";
 
 
 const GamesList = () => {
-  const navParams = useSelector((state) => state.dropdowns.currentSelection);
-  const filtersParams = useSelector((state) => state.filters.currentSelection);
-  // const { data, error, isLoading } = useFetchGamesQuery(navParams);
-  const { data, error, isLoading } = useFetchFilteredGamesQuery(filtersParams.join('.'));
-
-  const gamesList = classNames(
-    'mx-auto',
-    'flex',
-    'flex-wrap',
-    'justify-between',
-    'gap-10',
-    'p-4'
-  )
+  const { platform, category, tags } = useSelector((state) => {
+    return (
+      {
+        platform: state.filters.platform,
+        category: state.filters.category,
+        tags: state.filters.tags
+      }
+    )
+  });
+  
+  let isLoading, data, error;
+  if (tags.length > 0) {
+    ({ data, error, isLoading } = useFetchFilteredGamesQuery({ tag: tags.join('.'), platform }));
+  } else {
+    ({ data, error, isLoading } = useFetchGamesQuery({ category, platform }));
+  }
 
   let content;
   if (isLoading) {
@@ -31,6 +34,15 @@ const GamesList = () => {
         return <GameCard key={game.id} game={game}/> 
       })
   }
+
+  const gamesList = classNames(
+    'mx-auto',
+    'flex',
+    'flex-wrap',
+    'justify-between',
+    'gap-10',
+    'p-4'
+  )
 
   return (
     <div className="flex">

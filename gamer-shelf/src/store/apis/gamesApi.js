@@ -8,7 +8,7 @@ const gamesApi = createApi({
   endpoints(builder) {
     return {
       fetchGames: builder.query({
-        query: (category) => {
+        query: ({ category, platform}) => {
           const queryParams = {
             headers: {
               'X-RapidAPI-Key': 'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
@@ -17,8 +17,12 @@ const gamesApi = createApi({
             method: 'GET'
           };
           if (category) {
-            queryParams.params = {category: category};
+            queryParams.params = { category: category };
           }
+          if (platform) {
+            queryParams.params = { platform: platform }
+          }
+
           return {
             url: '/games',
             ...queryParams
@@ -54,7 +58,7 @@ const gamesApi = createApi({
         })
       }),
       fetchFilteredGames: builder.query({
-        query: (tag) => {
+        query: ({tag, platform}) => {
           const queryParams = {
             headers: {
               'X-RapidAPI-Key': 'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
@@ -62,8 +66,8 @@ const gamesApi = createApi({
             },
             method: 'GET'
           };
-          if (tag) {
-            queryParams.params = { tag: tag };
+          if (tag || platform) {
+            queryParams.params = { tag: tag, platform: platform };
           }
           return {
             url: '/filter',

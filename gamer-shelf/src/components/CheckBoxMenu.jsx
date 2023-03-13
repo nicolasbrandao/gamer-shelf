@@ -5,9 +5,9 @@ import { useSelector, useDispatch } from 'react-redux'
 
 const CheckBoxMenu = ({data}) => {
   const dispatch = useDispatch();
-  const { currentSelection } = useSelector((state) => {
+  const { tags } = useSelector((state) => {
     return {
-      currentSelection: state.filters.currentSelection
+      tags: state.filters.tags
     }
   })
 
@@ -36,7 +36,7 @@ const CheckBoxMenu = ({data}) => {
   )
 
   const checkBoxItems = data.items.map(item => {
-    const icon = currentSelection.includes(item.id) ?
+    const icon = tags.includes(item.id) ?
     <ImCheckboxChecked /> :
     <ImCheckboxUnchecked />
 
