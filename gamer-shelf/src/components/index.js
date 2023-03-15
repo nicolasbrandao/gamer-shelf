@@ -1,7 +1,5 @@
 export { default as CheckBoxMenu } from './CheckBoxMenu'
 export { default as Dropdown } from './Dropdown'
-export { default as FiltersDropdown } from './FiltersDropdown'
-export { default as FiltersHeader } from './FiltersHeader'
 export { default as FiltersSideBar } from './FiltersSideBar'
 export { default as Footer } from './Footer'
 export { default as GameCard } from './GameCard'

@@ -1,12 +1,10 @@
-import classNames from "classnames"
-import { GamesList, FiltersHeader } from "../components"
+import { GamesList } from "../components"
 
 const HomePage = () => {
   return (
-    <div>
-      <FiltersHeader />
+    <section>
       <GamesList />
-    </div>
+    </section>
   )
 }
 

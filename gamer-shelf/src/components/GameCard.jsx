@@ -2,8 +2,7 @@ import classNames from "classnames"
 import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from "react-redux"
 import { toggleGameInLibrary } from '../store'
-import { GoPlus, GoDash, GoBrowser } from "react-icons/go"
-import { CgAdd, CgCloseO } from "react-icons/cg"
+import { GoPlus, GoX, GoBrowser } from "react-icons/go"
 import { FaWindows } from "react-icons/fa"
 import { Link } from 'react-router-dom'
 
@@ -136,8 +135,8 @@ const GameCard = ({game}) => {
   }
 
   let toggleLibraryIcon = libraryList.includes(game.id) ? 
-    <CgCloseO className={addButton} onClick={() => handleToggleGame(game.id)} /> : 
-    <CgAdd className={addButton} onClick={() => handleToggleGame(game.id)} />
+    <GoX className={addButton} onClick={() => handleToggleGame(game.id)} /> : 
+    <GoPlus className={addButton} onClick={() => handleToggleGame(game.id)} />
 
   return (
     

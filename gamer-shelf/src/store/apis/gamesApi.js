@@ -8,7 +8,7 @@ const gamesApi = createApi({
   endpoints(builder) {
     return {
       fetchGames: builder.query({
-        query: ({ category, platform}) => {
+        query: ({ category }) => {
           const queryParams = {
             headers: {
               'X-RapidAPI-Key': 'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
@@ -19,10 +19,6 @@ const gamesApi = createApi({
           if (category) {
             queryParams.params = { category: category };
           }
-          if (platform) {
-            queryParams.params = { platform: platform }
-          }
-
           return {
             url: '/games',
             ...queryParams

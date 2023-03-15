@@ -57,6 +57,24 @@ export const dropDownContent = [
       },
     ],
   },
+  {
+    id: 'platform',
+    title: 'Platform',
+    items: [
+      {
+        id: 'pc',
+        title: 'Windows (PC)'
+      },
+      {
+        id: 'browser',
+        title: 'Browser'
+      },
+      {
+        id: 'all',
+        title: 'All platforms'
+      }
+    ]
+  },
 ]
 
 export const filtersContent = [

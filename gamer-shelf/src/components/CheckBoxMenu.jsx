@@ -5,11 +5,14 @@ import { useSelector, useDispatch } from 'react-redux'
 
 const CheckBoxMenu = ({data}) => {
   const dispatch = useDispatch();
-  const { tags } = useSelector((state) => {
-    return {
-      tags: state.filters.tags
-    }
-  })
+  const { platform, tags } = useSelector((state) => {
+    return (
+      {
+        platform: state.filters.platform,
+        tags: state.filters.tags
+      }
+    )
+  });
 
   const handleClick = (tag) => {
     dispatch(updateFiltersSelection(tag))

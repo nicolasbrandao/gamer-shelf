@@ -3,7 +3,6 @@ import { GameCard, Skeleton } from "./";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
 
-
 const GamesList = () => {
   const { platform, category, tags } = useSelector((state) => {
     return (
@@ -14,14 +13,12 @@ const GamesList = () => {
       }
     )
   });
-  
-  let isLoading, data, error;
-  if (tags.length > 0) {
-    ({ data, error, isLoading } = useFetchFilteredGamesQuery({ tag: tags.join('.'), platform }));
-  } else {
-    ({ data, error, isLoading } = useFetchGamesQuery({ category, platform }));
-  }
 
+
+  // const { data, error, isLoading } = useFetchFilteredGamesQuery({ tag: tags.join('.'), platform })
+  const { data, error, isLoading } = useFetchGamesQuery({ category, platform });
+  
+  
   let content;
   if (isLoading) {
     content = <Skeleton times={9} />

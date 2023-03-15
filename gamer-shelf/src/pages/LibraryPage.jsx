@@ -7,9 +7,9 @@ const LibraryPage = () => {
   )
 
   return (
-    <div className={mainContainer}>
+    <section className={mainContainer}>
       <LibraryList />
-    </div>
+    </section>
   )
 }
 

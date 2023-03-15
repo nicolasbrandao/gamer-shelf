@@ -20,7 +20,6 @@ const filtersSlice = createSlice({
       if (state.tags.includes(action.payload)) {
         const index = state.tags.indexOf(action.payload)
         state.tags.splice(index, 1)
-        
       } else {
         state.tags.push(action.payload); 
       }

@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import { dropDownContent } from '../constants'
 import { VscLibrary } from 'react-icons/vsc'
+import { GoSettings } from 'react-icons/go'
 import { IoGameControllerOutline } from 'react-icons/io5'
 
 
@@ -56,6 +57,12 @@ const Navbar = () => {
     'gap-4'
   )
 
+  const advancedFilters = classNames(
+    'flex', 
+    'items-center', 
+    'gap-2'
+  )
+
   const libraryIcon = classNames(
     'text-2xl',
     'cursor-pointer'
@@ -89,6 +96,12 @@ const Navbar = () => {
       <div>
         <ul className={navList}>
           {navMenus}
+          <li>
+            <Link className={advancedFilters} to={'/filters'}>
+              Advanced Filters
+              <GoSettings />
+            </Link>
+          </li>
           <li>
             <Link to='/library'>
               <VscLibrary className={libraryIcon} />
