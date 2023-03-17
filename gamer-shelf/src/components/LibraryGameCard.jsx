@@ -84,7 +84,10 @@ const LibraryGameCard = ({game}) => {
         <p className={gameTitle}>{game.title}</p>
       </Link>
       <div>
-        {game.short_description.substring(0, 40) + '...'}
+        {game.genre}
+      </div>
+      <div>
+        {game.platform}
       </div>
       <div>
         <CgTrash className={icon} onClick={() => handleToggleGame(game.id)} />
