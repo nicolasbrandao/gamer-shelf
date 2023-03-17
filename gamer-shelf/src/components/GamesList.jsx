@@ -15,7 +15,7 @@ const GamesList = () => {
   
   const { content } = isFiltered ? 
     useFilteredGamesListContent(platform, tags) : 
-    useGamesListContent();
+    useGamesListContent(platform);
 
   const gamesList = classNames(
     'mx-auto',
