@@ -125,29 +125,31 @@ const GameDetails = () => {
           {carousel}
         </Carousel>
 
-        <div>
-          <p className={subtitle}>Minimum System Requirements</p>
+        {data.platform === 'Windows' && 
           <div>
-            <p className={subtitle}>Operational System</p>
-            <p className={subtext}>{data.minimum_system_requirements.os}</p>
+            <p className={subtitle}>Minimum System Requirements</p>
+            <div>
+              <p className={subtitle}>Operational System</p>
+              <p className={subtext}>{data.minimum_system_requirements.os}</p>
+            </div>
+            <div>
+              <p className={subtitle}>Processor</p>
+              <p className={subtext}>{data.minimum_system_requirements.processor}</p>
+            </div>
+             <div>
+                <p className={subtitle}>Memory</p>
+                <p className={subtext}>{data.minimum_system_requirements.memory}</p>
+              </div>
+              <div>
+                <p className={subtitle}>Graphics</p>
+                <p className={subtext}>{data.minimum_system_requirements.graphics}</p>
+              </div>
+              <div>
+                <p className={subtitle}>Storage</p>
+                <p className={subtext}>{data.minimum_system_requirements.storage}</p>
+              </div>
           </div>
-          <div>
-            <p className={subtitle}>Processor</p>
-            <p className={subtext}>{data.minimum_system_requirements.processor}</p>
-          </div>
-          <div>
-            <p className={subtitle}>Memory</p>
-            <p className={subtext}>{data.minimum_system_requirements.memory}</p>
-          </div>
-          <div>
-            <p className={subtitle}>Graphics</p>
-            <p className={subtext}>{data.minimum_system_requirements.graphics}</p>
-          </div>
-          <div>
-            <p className={subtitle}>Storage</p>
-            <p className={subtext}>{data.minimum_system_requirements.storage}</p>
-          </div>
-        </div>
+        }
       </div>
     )
   }
