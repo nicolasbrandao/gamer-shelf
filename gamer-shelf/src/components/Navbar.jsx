@@ -1,11 +1,12 @@
-import { useSelector } from 'react-redux'
-import classNames from 'classnames'
+import { updateQueryType } from '../store'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import classNames from 'classnames'
 import { VscLibrary } from 'react-icons/vsc'
 import { GoSettings } from 'react-icons/go'
 import { IoGameControllerOutline } from 'react-icons/io5'
-import { updateQueryType } from '../store'
-import { useDispatch } from 'react-redux'
+
+
 
 
 const Navbar = () => {

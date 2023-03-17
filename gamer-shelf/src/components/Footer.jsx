@@ -1,7 +1,7 @@
+import { useFetchGitHubStatsQuery } from '../store'
 import classNames from 'classnames'
 import { AiOutlineStar } from 'react-icons/ai'
 import { BiGitRepoForked } from 'react-icons/bi'
-import { useFetchGitHubStatsQuery } from '../store'
 import logo from '../assets/api-logo.png'
 
 const Footer = () => {

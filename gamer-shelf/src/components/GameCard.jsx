@@ -1,7 +1,7 @@
+import { toggleGameInLibrary } from '../store'
+import { useDispatch, useSelector } from "react-redux"
 import classNames from "classnames"
 import { toast } from 'react-toastify'
-import { useDispatch, useSelector } from "react-redux"
-import { toggleGameInLibrary } from '../store'
 import { GoPlus, GoX, GoBrowser } from "react-icons/go"
 import { FaWindows } from "react-icons/fa"
 import { Link } from 'react-router-dom'

@@ -1,3 +1,4 @@
+// Used as props for CheckBoxMenu.jsx
 export const advancedFiltersContent = [
   {
     id: 'genre',

@@ -1,11 +1,12 @@
+import { toggleGameInLibrary } from '../store'
+import { useDispatch, useSelector } from "react-redux"
+import { Link } from "react-router-dom"
 import classNames from "classnames"
 import { CgTrash } from 'react-icons/cg'
 import { GoBrowser } from "react-icons/go"
 import { FaWindows } from "react-icons/fa"
-import { Link } from "react-router-dom"
 import { toast } from 'react-toastify'
-import { toggleGameInLibrary } from '../store'
-import { useDispatch, useSelector } from "react-redux"
+
 
 const LibraryGameCard = ({game}) => {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
-import { libraryReducer, toggleGameInLibrary } from './slices/librarySlice'
 import { filtersReducer, toggleFilters, updateFiltersSelection, updateQueryType } from './slices/filtersSlice'
+import { libraryReducer, toggleGameInLibrary } from './slices/librarySlice'
 import { gamesApi } from './apis/gamesApi'
 import { gitHubStatsApi } from './apis/gitHubStatsApi'
 

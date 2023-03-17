@@ -1,6 +1,6 @@
-import classNames from 'classnames'
 import { useFetchGameDetailsQuery } from '../store'
 import { useParams } from 'react-router-dom'
+import classNames from 'classnames'
 import { Skeleton } from './'
 import { Carousel } from 'react-responsive-carousel'
 import { GoBrowser } from "react-icons/go"

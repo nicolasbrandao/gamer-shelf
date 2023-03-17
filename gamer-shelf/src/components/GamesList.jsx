@@ -1,14 +1,13 @@
-import classNames from "classnames";
-import { useSelector } from "react-redux";
 import { useFetchGamesQuery, useFetchFilteredGamesQuery } from "../store";
+import { useSelector } from "react-redux";
+import classNames from "classnames";
 import { BiCommentError } from 'react-icons/bi'
-import { Skeleton, GameCard } from '../components'
+import { Skeleton, GameCard } from './'
 
 const GamesList = () => {
   const { tags, isFiltered } = useSelector((state) => {
     return (
       {
-        platform: state.filters.platform,
         tags: state.filters.tags,
         isFiltered: state.filters.isFiltered
       }

@@ -1,7 +1,7 @@
-import classNames from 'classnames'
-import { ImCheckboxUnchecked, ImCheckboxChecked } from 'react-icons/im'
 import { updateFiltersSelection } from '../store'
 import { useSelector, useDispatch } from 'react-redux'
+import classNames from 'classnames'
+import { ImCheckboxUnchecked, ImCheckboxChecked } from 'react-icons/im'
 
 const CheckBoxMenu = ({data}) => {
   const dispatch = useDispatch();
