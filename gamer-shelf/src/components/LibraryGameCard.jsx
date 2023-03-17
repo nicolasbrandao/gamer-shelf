@@ -83,9 +83,8 @@ const LibraryGameCard = ({game}) => {
         <img className={gameThumbnail} src={game.thumbnail} alt={game.title} />
         <p className={gameTitle}>{game.title}</p>
       </Link>
-      <div>Currently Playing</div>
       <div>
-        <SlSettings className={icon} />
+        {game.short_description.substring(0, 40) + '...'}
       </div>
       <div>
         <CgTrash className={icon} onClick={() => handleToggleGame(game.id)} />

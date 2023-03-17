@@ -1,36 +1,21 @@
-import { useFetchGamesQuery, useFetchFilteredGamesQuery } from "../store";
-import { GameCard, Skeleton } from "./";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
+import { useFilteredGamesListContent, useGamesListContent } from "../hooks";
 
 const GamesList = () => {
-  const { platform, category, tags } = useSelector((state) => {
+  const { platform, tags, isFiltered } = useSelector((state) => {
     return (
       {
         platform: state.filters.platform,
-        category: state.filters.category,
-        tags: state.filters.tags
+        tags: state.filters.tags,
+        isFiltered: state.filters.isFiltered
       }
     )
   });
-
-
-  // const { data, error, isLoading } = useFetchFilteredGamesQuery({ tag: tags.join('.'), platform })
-  const { data, error, isLoading } = useFetchGamesQuery({ category, platform });
   
-  
-  let content;
-  if (isLoading) {
-    content = <Skeleton times={9} />
-  } else if (error) {
-    content = <div>Error loading games.</div>
-  } else {
-    content = data?.status === 0 ? 
-      'NO MATCH' :
-      data?.map(game => {
-        return <GameCard key={game.id} game={game}/> 
-      })
-  }
+  const { content } = isFiltered ? 
+    useFilteredGamesListContent(platform, tags) : 
+    useGamesListContent();
 
   const gamesList = classNames(
     'mx-auto',

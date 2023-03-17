@@ -5,15 +5,15 @@ const filtersSlice = createSlice({
   initialState: {
     isOpen: '',
     platform: 'all',
-    category: '',
-    tags: []
+    tags: [],
+    isFiltered: false
   },
   reducers: {
     toggleFilters(state, action) {
       if (state.isOpen === action.payload) {
         state.isOpen = ''
       } else {
-        state.isOpen = action.payload;
+        state.isOpen = action.payload
       }
     },
     updateFiltersSelection: (state, action) => {
@@ -21,18 +21,26 @@ const filtersSlice = createSlice({
         const index = state.tags.indexOf(action.payload)
         state.tags.splice(index, 1)
       } else {
-        state.tags.push(action.payload); 
+        state.tags.push(action.payload)
       }
-    },
-    updateCategorySelection: (state, action) => {
-      state.category = action.payload
+      if (state.tags.length === 0){
+        state.isFiltered = false
+      } else {
+        state.isFiltered = true
+      }
     },
     updatePlatformSelection: (state, action) => {
       state.platform = action.payload
+    },
+    updateQueryType: (state, action) => {
+      state.isFiltered = action.payload
+      if (!state.isFiltered) {
+        state.tags = []
+      }
     }
   }
 })
 
-export const { toggleFilters, updateFiltersSelection, updateCategorySelection, updatePlatformSelection } = filtersSlice.actions;
+export const { toggleFilters, updateFiltersSelection, updatePlatformSelection, updateQueryType } = filtersSlice.actions;
 export const filtersReducer = filtersSlice.reducer;
 

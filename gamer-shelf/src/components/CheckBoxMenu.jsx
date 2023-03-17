@@ -5,11 +5,12 @@ import { useSelector, useDispatch } from 'react-redux'
 
 const CheckBoxMenu = ({data}) => {
   const dispatch = useDispatch();
-  const { platform, tags } = useSelector((state) => {
+  const { platform, tags, isFiltered } = useSelector((state) => {
     return (
       {
         platform: state.filters.platform,
-        tags: state.filters.tags
+        tags: state.filters.tags,
+        isFiltered: state.filters.isFiltered
       }
     )
   });
@@ -39,9 +40,10 @@ const CheckBoxMenu = ({data}) => {
   )
 
   const checkBoxItems = data.items.map(item => {
+
     const icon = tags.includes(item.id) ?
-    <ImCheckboxChecked /> :
-    <ImCheckboxUnchecked />
+      <ImCheckboxChecked /> :
+      <ImCheckboxUnchecked />
 
     return (
       <li key={item.id} className={menuItemsContainer} onClick={() => handleClick(item.id)}>

@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { libraryReducer, toggleGameInLibrary } from './slices/librarySlice'
-import { filtersReducer, toggleFilters, updateFiltersSelection, updateCategorySelection, updatePlatformSelection } from './slices/filtersSlice'
+import { filtersReducer, toggleFilters, updateFiltersSelection, updatePlatformSelection, updateQueryType } from './slices/filtersSlice'
 import { gamesApi } from './apis/gamesApi'
 import { gitHubStatsApi } from './apis/gitHubStatsApi'
 
@@ -26,8 +26,8 @@ export {
   toggleGameInLibrary,  
   toggleFilters, 
   updateFiltersSelection,
-  updateCategorySelection,
-  updatePlatformSelection 
+  updatePlatformSelection,
+  updateQueryType
 }
 
 export { useFetchGamesQuery, useFetchGameDetailsQuery, useFetchFilteredGamesQuery } from './apis/gamesApi'

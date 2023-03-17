@@ -1,26 +1,23 @@
-import { Dropdown } from './'
 import { useSelector } from 'react-redux'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
-import { dropDownContent } from '../constants'
 import { VscLibrary } from 'react-icons/vsc'
 import { GoSettings } from 'react-icons/go'
 import { IoGameControllerOutline } from 'react-icons/io5'
+import { updateQueryType } from '../store'
+import { useDispatch } from 'react-redux'
 
 
 const Navbar = () => {
-  const navMenus = dropDownContent.map(item => {
-    return (
-      <li key={item.id}>
-        <Dropdown data={item} />
-      </li>
-    )
-  })
+  const dispatch = useDispatch();
 
   const libraryLength = useSelector((state) => {
     return state.library.libraryList.length < 10 ? state.library.libraryList.length : '9+'
   });
 
+  const handleClick = () => {
+    dispatch(updateQueryType(false))
+  }
   const navbar = classNames(
     'flex',
     'justify-between',
@@ -87,7 +84,7 @@ const Navbar = () => {
   return (
     <nav className={navbar}>
       
-      <Link to={'/'}>
+      <Link to={'/'} onClick={() => handleClick()}>
         <div className={navBrand}>
           <span className={brandText}>GamerShelf</span> 
           <IoGameControllerOutline className={brandIcon} />
@@ -95,10 +92,9 @@ const Navbar = () => {
       </Link>
       <div>
         <ul className={navList}>
-          {navMenus}
           <li>
             <Link className={advancedFilters} to={'/filters'}>
-              Advanced Filters
+              Filters
               <GoSettings />
             </Link>
           </li>
