@@ -5,10 +5,13 @@ import { useFetchGitHubStatsQuery } from '../store'
 import logo from '../assets/api-logo.png'
 
 const Footer = () => {
-  const { data, error, isLoading } = useFetchGitHubStatsQuery();
+  const { data } = useFetchGitHubStatsQuery();
   
   const footerContainer = classNames(
     'flex',
+    'flex-col',
+    'gap-4',
+    'sm:flex-row',
     'justify-between',
     'items-center',
     'relative',
@@ -38,7 +41,8 @@ const Footer = () => {
 
   const statsContainer = classNames(
     'flex',
-    'items-center'
+    'items-center',
+    'justify-center'
   )
 
   return (

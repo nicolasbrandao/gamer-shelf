@@ -48,7 +48,7 @@ const gamesApi = createApi({
         })
       }),
       fetchFilteredGames: builder.query({
-        query: ({tag, platform}) => {
+        query: (tag) => {
           const queryParams = {
             headers: {
               'X-RapidAPI-Key': 'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
@@ -56,8 +56,8 @@ const gamesApi = createApi({
             },
             method: 'GET'
           };
-          if (tag || platform) {
-            queryParams.params = { tag: tag, platform: platform };
+          if (tag) {
+            queryParams.params = { tag: tag };
           }
           return {
             url: '/filter',

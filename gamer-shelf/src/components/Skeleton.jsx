@@ -1,7 +1,7 @@
 import classNames from "classnames"
 import { BiLoaderAlt } from 'react-icons/bi'
 
-const Skeleton = ({ times }) => {
+const Skeleton = ({ times, fullW, fullH }) => {
   const wrapper = classNames(
     'relative',
     'overflow-hidden',
@@ -11,11 +11,12 @@ const Skeleton = ({ times }) => {
     'bg-frg1',
     'opacity-70',
     'rounded',
-    'w-[250px]',
-    'h-[300px]',
     'flex-auto',
-    'shadow-2xl'    
+    'shadow-2xl',
+    fullW ? 'w-full' : 'w-[250px]',
+    fullH ? 'h-[30rem]' : 'h-[300px]'    
   )
+  
   const spinner = classNames(
     'animate-spin',
     'text-bcg1',

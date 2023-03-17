@@ -10,7 +10,9 @@ const App = () => {
   const appContainer = classNames(
     'font-montserrat',
     'pt-20',
-    'w-[60rem]',
+    'md:w-[40rem]',
+    'xl:w-[60rem]',
+    'w-[20rem]',
     'mx-auto',
     'min-h-screen',
     'flex',

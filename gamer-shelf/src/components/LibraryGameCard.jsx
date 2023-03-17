@@ -1,6 +1,7 @@
 import classNames from "classnames"
 import { CgTrash } from 'react-icons/cg'
-import { SlSettings } from 'react-icons/sl'
+import { GoBrowser } from "react-icons/go"
+import { FaWindows } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import { toast } from 'react-toastify'
 import { toggleGameInLibrary } from '../store'
@@ -8,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 const LibraryGameCard = ({game}) => {
   const dispatch = useDispatch();
+
   const { libraryList } = useSelector((state) => {
     return {
       libraryList: state.library.libraryList
@@ -42,34 +44,70 @@ const LibraryGameCard = ({game}) => {
     dispatch(toggleGameInLibrary(gameID))
   }
 
+  let infoContent;
+  if (game.platform === 'PC (Windows)'){
+    infoContent = <FaWindows />
+  } else {
+    infoContent = <GoBrowser />;
+  }
+
   const gameContainer = classNames(
     'flex',
+    'flex-col',
+    'md:flex-row',
     'items-center',
     'justify-between',
     'px-4',
     'bg-frg1',
     'rounded',
-    'max-w-[50rem]',
-    'w-[50rem]',
-    'h-[8rem]',
+    'xl:max-w-[50rem]',
+    'w-full',
+    'h-[15rem]',
+    'p-4',
+    'md:h-[8rem]',
     'shadow-2xl'
   )
 
   const gameHeader = classNames(
     'flex',
+    'flex-col',
+    'md:flex-row',
     'items-center',
     'gap-2'
   )
 
   const gameThumbnail = classNames(
-    'w-[180px]',
-    'h-[100px]',
+    'w-[250px]',
+    'md:w-[180px]',
+    'h-[130px]',
+    'md:h-[100px]',
     'rounded'
   )
 
   const gameTitle = classNames(
-    'w-[10rem]',
-    'text-center'
+    'w-full',
+    'md:w-[10rem]',
+    'text-center',
+    'font-bold'
+  )
+
+  const gameBody = classNames(
+    'flex',
+    'w-[15rem]',
+    'md:w-[10rem]',
+    'xl:w-[20rem]',
+    'justify-between'
+  )
+
+  const gameGenre = classNames(
+    'flex',
+    'rounded',
+    'bg-frg2',
+    'px-1',
+    'text-xs',
+    'w-[5rem]',
+    'items-center',
+    'justify-center'
   )
 
   const icon = classNames(
@@ -83,14 +121,16 @@ const LibraryGameCard = ({game}) => {
         <img className={gameThumbnail} src={game.thumbnail} alt={game.title} />
         <p className={gameTitle}>{game.title}</p>
       </Link>
-      <div>
-        {game.genre}
-      </div>
-      <div>
-        {game.platform}
-      </div>
-      <div>
-        <CgTrash className={icon} onClick={() => handleToggleGame(game.id)} />
+      <div className={gameBody}>
+        <div className={gameGenre}>
+          {game.genre}
+        </div>
+        <div>
+          {infoContent}
+        </div>
+        <div>
+          <CgTrash className={icon} onClick={() => handleToggleGame(game.id)} />
+        </div>
       </div>
     </div>
   )

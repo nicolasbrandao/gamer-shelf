@@ -10,6 +10,12 @@ const GameDetails = () => {
   const { gameId } = useParams();
   const { data, error, isLoading } = useFetchGameDetailsQuery(gameId);
 
+  let options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
   const gameDetailsContainer = classNames(
     'flex',
     'flex-col',
@@ -23,6 +29,8 @@ const GameDetails = () => {
   
   const containerHeader = classNames(
     'flex',
+    'flex-col',
+    'md:flex-row',
     'gap-4'
   )
   
@@ -69,14 +77,14 @@ const GameDetails = () => {
   let carousel = data?.screenshots.map(item => {
     return (
       <div key={item.id}>
-      <img src={item.image} />
+        <img src={item.image} />
       </div>
     )
   })
 
   let content;
   if (isLoading) {
-    content = <Skeleton times={1} />
+    content = <Skeleton times={1} fullW fullH/>
   } else if (error) {
     content = <div>Error loading games.</div>
   } else {
@@ -102,7 +110,7 @@ const GameDetails = () => {
             </div>
             <div>
               <p className={subtitle}>Release Date</p>
-              <p className={subtext}>{data.release_date}</p>
+              <p className={subtext}>{Intl.DateTimeFormat('en-US', options).format(new Date(data.release_date))}</p>
             </div>
           </div>
         </div>
@@ -116,7 +124,7 @@ const GameDetails = () => {
         <Carousel>
           {carousel}
         </Carousel>
-  
+
         <div>
           <p className={subtitle}>Minimum System Requirements</p>
           <div>
@@ -139,7 +147,6 @@ const GameDetails = () => {
             <p className={subtitle}>Storage</p>
             <p className={subtext}>{data.minimum_system_requirements.storage}</p>
           </div>
-
         </div>
       </div>
     )

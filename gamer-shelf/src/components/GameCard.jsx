@@ -49,6 +49,7 @@ const GameCard = ({game}) => {
     'items-center',
     'rounded',
     'max-w-[280px]',
+    'md:max-w-[320px]',
     'w-[280px]',
     'h-[300px]',
     'flex-auto',
@@ -123,7 +124,6 @@ const GameCard = ({game}) => {
     'rounded',
     'bg-frg2',
     'px-1',
-    'text-sm',
     'text-xs'
   )
 
@@ -139,7 +139,6 @@ const GameCard = ({game}) => {
     <GoPlus className={addButton} onClick={() => handleToggleGame(game.id)} />
 
   return (
-    
       <div className={gameContainer}>
         <Link className={gameLink} to={`/game/${game.id}`}>
           <div>

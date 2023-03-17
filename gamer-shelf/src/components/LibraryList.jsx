@@ -17,12 +17,12 @@ const LibraryList = () => {
     'flex',
     'items-center',
     'gap-4',
-    'text-4xl',
+    'text-2xl',
   )
 
   let content;
   if (isLoading) {
-    content = <Skeleton times={9} />
+    content = <Skeleton times={6} fullW/>
   } else if (error) {
     content = <div>Error loading games.</div>
   } else {
@@ -44,10 +44,12 @@ const LibraryList = () => {
   const gamesList = classNames(
     'mx-auto',
     'flex',
+    'items-center',
+    'justify-center',
     'flex-wrap',
     'gap-10',
     'p-4',
-    'w-[60rem]'
+    'md:w-full',
   )
 
   return (

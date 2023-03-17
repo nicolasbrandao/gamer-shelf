@@ -4,7 +4,6 @@ const filtersSlice = createSlice({
   name: 'filters',
   initialState: {
     isOpen: '',
-    platform: 'all',
     tags: [],
     isFiltered: false
   },
@@ -29,9 +28,6 @@ const filtersSlice = createSlice({
         state.isFiltered = true
       }
     },
-    updatePlatformSelection: (state, action) => {
-      state.platform = action.payload
-    },
     updateQueryType: (state, action) => {
       state.isFiltered = action.payload
       if (!state.isFiltered) {
@@ -41,6 +37,6 @@ const filtersSlice = createSlice({
   }
 })
 
-export const { toggleFilters, updateFiltersSelection, updatePlatformSelection, updateQueryType } = filtersSlice.actions;
+export const { toggleFilters, updateFiltersSelection, updateQueryType } = filtersSlice.actions;
 export const filtersReducer = filtersSlice.reducer;
 
