@@ -9,17 +9,15 @@ const gitHubStatsApi = createApi({
     return {
       fetchGitHubStats: builder.query({
         query: () => {
-            return {
-              url: '/gamer-shelf',
-              method: 'GET'
-            }
+          return {
+            url: '/gamer-shelf',
+            method: 'GET',
           }
-        }
-      )
+        },
+      }),
     }
-  }
+  },
 })
 
-export const { useFetchGitHubStatsQuery } = gitHubStatsApi;
-export { gitHubStatsApi };
-
+export const { useFetchGitHubStatsQuery } = gitHubStatsApi
+export { gitHubStatsApi }

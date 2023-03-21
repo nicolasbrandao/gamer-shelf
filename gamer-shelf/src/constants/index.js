@@ -18,7 +18,7 @@ export const advancedFiltersContent = [
       },
       {
         id: 'moba',
-      title: 'MOBA',
+        title: 'MOBA',
       },
       {
         id: 'racing',
@@ -46,9 +46,9 @@ export const advancedFiltersContent = [
       },
       {
         id: 'fighting',
-        title: 'Fighting',  
+        title: 'Fighting',
       },
-    ]
+    ],
   },
   {
     id: 'graphics',
@@ -62,7 +62,7 @@ export const advancedFiltersContent = [
         id: '2d',
         title: '2D',
       },
-    ]
+    ],
   },
   {
     id: 'combat',
@@ -76,7 +76,7 @@ export const advancedFiltersContent = [
         id: 'pve',
         title: 'PVE',
       },
-    ]
+    ],
   },
   {
     id: 'setting',
@@ -84,25 +84,25 @@ export const advancedFiltersContent = [
     items: [
       {
         id: 'anime',
-        title: 'Anime',  
+        title: 'Anime',
       },
       {
         id: 'fantasy',
-        title: 'Fantasy',  
+        title: 'Fantasy',
       },
       {
         id: 'sci-fi',
-        title: 'Sci-Fi',  
+        title: 'Sci-Fi',
       },
       {
         id: 'military',
-        title: 'Military',  
+        title: 'Military',
       },
       {
         id: 'horror',
-        title: 'Horror',  
+        title: 'Horror',
       },
-    ]
+    ],
   },
   {
     id: 'tags',
@@ -122,7 +122,7 @@ export const advancedFiltersContent = [
       },
       {
         id: 'action-rpg',
-        title: 'Action RPG',  
+        title: 'Action RPG',
       },
       {
         id: 'pixel',
@@ -178,24 +178,24 @@ export const advancedFiltersContent = [
       },
       {
         id: 'action',
-        title: 'Action',  
+        title: 'Action',
       },
       {
         id: 'martial-arts',
-        title: 'Martial Arts',  
+        title: 'Martial Arts',
       },
       {
         id: 'flight',
-        title: 'Flight',  
+        title: 'Flight',
       },
       {
         id: 'low-spec',
-        title: 'Low-specs',  
+        title: 'Low-specs',
       },
       {
         id: 'mmorts',
-        title: 'MMORTS',  
+        title: 'MMORTS',
       },
-    ]
+    ],
   },
 ]

@@ -1,5 +1,5 @@
-export { default as CheckBoxMenu } from './CheckBoxMenu'
-export { default as FiltersSideBar } from './FiltersSideBar'
+export { default as CheckBoxMenu } from './CheckboxMenu'
+export { default as FiltersSideBar } from './FiltersSidebar'
 export { default as Footer } from './Footer'
 export { default as GameCard } from './GameCard'
 export { default as GameDetails } from './GameDetails'

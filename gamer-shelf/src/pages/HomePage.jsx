@@ -1,10 +1,10 @@
-import { GamesList } from "../components"
+import { GamesList } from '../components'
 
 const HomePage = () => {
   return (
-    <section>
+    <>
       <GamesList />
-    </section>
+    </>
   )
 }
 

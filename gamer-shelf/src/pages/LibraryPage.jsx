@@ -1,15 +1,10 @@
-import classNames from "classnames"
-import { LibraryList } from "../components"
+import { LibraryList } from '../components'
 
 const LibraryPage = () => {
-  const mainContainer = classNames(
-    ''
-  )
-
   return (
-    <section className={mainContainer}>
+    <>
       <LibraryList />
-    </section>
+    </>
   )
 }
 

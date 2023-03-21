@@ -1,5 +1,5 @@
-import classNames from "classnames"
-import { FiltersSideBar, GamesList } from "../components"
+import classNames from 'classnames'
+import { FiltersSideBar, GamesList } from '../components'
 
 const AdvancedFiltersPage = () => {
   const mainContainer = classNames(
@@ -20,9 +20,9 @@ const AdvancedFiltersPage = () => {
       <aside>
         <FiltersSideBar />
       </aside>
-      <section>
+      <>
         <GamesList />
-      </section>
+      </>
     </div>
   )
 }

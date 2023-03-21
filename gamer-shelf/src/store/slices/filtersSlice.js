@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const filtersSlice = createSlice({
   name: 'filters',
   initialState: {
     isOpen: '',
     tags: [],
-    isFiltered: false
+    isFiltered: false,
   },
   reducers: {
     toggleFilters(state, action) {
@@ -22,7 +22,7 @@ const filtersSlice = createSlice({
       } else {
         state.tags.push(action.payload)
       }
-      if (state.tags.length === 0){
+      if (state.tags.length === 0) {
         state.isFiltered = false
       } else {
         state.isFiltered = true
@@ -33,10 +33,10 @@ const filtersSlice = createSlice({
       if (!state.isFiltered) {
         state.tags = []
       }
-    }
-  }
+    },
+  },
 })
 
-export const { toggleFilters, updateFiltersSelection, updateQueryType } = filtersSlice.actions;
-export const filtersReducer = filtersSlice.reducer;
-
+export const { toggleFilters, updateFiltersSelection, updateQueryType } =
+  filtersSlice.actions
+export const filtersReducer = filtersSlice.reducer

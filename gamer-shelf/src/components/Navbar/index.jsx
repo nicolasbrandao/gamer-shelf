@@ -1,4 +1,4 @@
-import { updateQueryType } from '../store'
+import { updateQueryType } from '../../store'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
@@ -6,19 +6,20 @@ import { VscLibrary } from 'react-icons/vsc'
 import { GoSettings } from 'react-icons/go'
 import { IoGameControllerOutline } from 'react-icons/io5'
 
-
-
-
 const Navbar = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const libraryLength = useSelector((state) => {
-    return state.library.libraryList.length < 10 ? state.library.libraryList.length : '9+'
-  });
+    return state.library.libraryList.length < 10
+      ? state.library.libraryList.length
+      : '9+'
+  })
 
-  const handleClick = () => {
+  const handleClick = (event) => {
+    event.preventDefault()
     dispatch(updateQueryType(false))
   }
+
   const navbar = classNames(
     'flex',
     'justify-between',
@@ -39,32 +40,15 @@ const Navbar = () => {
     'cursor-pointer'
   )
 
-  const brandText = classNames(
-    'text-xl',
-    'font-bold'
-  )
+  const brandText = classNames('text-xl', 'font-bold')
 
-  const brandIcon = classNames(
-    'text-2xl'
-  )
+  const brandIcon = classNames('text-2xl')
 
-  const navList = classNames(
-    'list-none',
-    'flex',
-    'items-center',
-    'gap-4'
-  )
+  const navList = classNames('list-none', 'flex', 'items-center', 'gap-4')
 
-  const advancedFilters = classNames(
-    'flex', 
-    'items-center', 
-    'gap-2'
-  )
+  const advancedFilters = classNames('flex', 'items-center', 'gap-2')
 
-  const libraryIcon = classNames(
-    'text-2xl',
-    'cursor-pointer'
-  )
+  const libraryIcon = classNames('text-2xl', 'cursor-pointer')
 
   const libCounter = classNames(
     'rounded-full',
@@ -81,14 +65,13 @@ const Navbar = () => {
     'border-frg1',
     libraryLength === 0 ? 'hidden' : 'flex'
   )
-  
+
   return (
-    <nav className={navbar}>
-      
-      <Link to={'/'} onClick={() => handleClick()}>
+    <nav className={navbar} role="navigation">
+      <Link to={'/'} onClick={(event) => handleClick(event)}>
         <div className={navBrand}>
-          <span className={brandText}>GamerShelf</span> 
-          <IoGameControllerOutline className={brandIcon} />
+          <span className={brandText}>GamerShelf</span>
+          <IoGameControllerOutline className={brandIcon} aria-hidden="true" />
         </div>
       </Link>
       <div>
@@ -96,13 +79,18 @@ const Navbar = () => {
           <li>
             <Link className={advancedFilters} to={'/filters'}>
               Filters
-              <GoSettings />
+              <GoSettings aria-hidden="true" />
             </Link>
           </li>
           <li>
-            <Link to='/library'>
-              <VscLibrary className={libraryIcon} />
-              <div className={libCounter}>{libraryLength}</div>
+            <Link to="/library">
+              <VscLibrary className={libraryIcon} aria-hidden="true" />
+              <div
+                className={libCounter}
+                aria-label={`${libraryLength} games in the library`}
+              >
+                {libraryLength}
+              </div>
             </Link>
           </li>
         </ul>

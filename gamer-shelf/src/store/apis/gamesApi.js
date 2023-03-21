@@ -12,67 +12,74 @@ const gamesApi = createApi({
           return {
             url: '/games',
             headers: {
-              'X-RapidAPI-Key': 'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
-              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
+              'X-RapidAPI-Key':
+                'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
+              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
             },
             method: 'GET',
-          };
+          }
         },
         provides: (result) => ({
           data: result?.data,
           error: result?.error,
-          isLoading: !result
-        })
+          isLoading: !result,
+        }),
       }),
       fetchGameDetails: builder.query({
         query: (id) => {
           const queryParams = {
             headers: {
-              'X-RapidAPI-Key': 'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
-              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
+              'X-RapidAPI-Key':
+                'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
+              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
             },
-            method: 'GET'
-          };
+            method: 'GET',
+          }
           if (id) {
-            queryParams.params = { id: id };
+            queryParams.params = { id: id }
           }
           return {
             url: '/game',
-            ...queryParams
-          };
+            ...queryParams,
+          }
         },
         provides: (result) => ({
           data: result?.data,
           error: result?.error,
-          isLoading: !result
-        })
+          isLoading: !result,
+        }),
       }),
       fetchFilteredGames: builder.query({
         query: (tag) => {
           const queryParams = {
             headers: {
-              'X-RapidAPI-Key': 'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
-              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
+              'X-RapidAPI-Key':
+                'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
+              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
             },
-            method: 'GET'
-          };
+            method: 'GET',
+          }
           if (tag) {
-            queryParams.params = { tag: tag };
+            queryParams.params = { tag: tag }
           }
           return {
             url: '/filter',
-            ...queryParams
-          };
+            ...queryParams,
+          }
         },
         provides: (result) => ({
           data: result?.data,
           error: result?.error,
-          isLoading: !result
-        })
-      })
+          isLoading: !result,
+        }),
+      }),
     }
-  }
+  },
 })
 
-export const { useFetchGamesQuery, useFetchGameDetailsQuery, useFetchFilteredGamesQuery } = gamesApi;
-export { gamesApi };
+export const {
+  useFetchGamesQuery,
+  useFetchGameDetailsQuery,
+  useFetchFilteredGamesQuery,
+} = gamesApi
+export { gamesApi }
