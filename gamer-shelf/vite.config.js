@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import vitePluginFavicon from 'vite-plugin-favicon'
+import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -34,5 +35,52 @@ export default defineConfig({
           },
         },
     })
-  ]
+  ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src')
+    }
+  },
+  define: {
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+  },
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'redux',
+      'react-redux',
+      'redux-thunk'
+    ]
+  },
+  server: {
+    hmr: {
+      overlay: false
+    }
+  },
+  build: {
+    sourcemap: true,
+    outDir: 'dist',
+    emptyOutDir: true,
+    brotliSize: false,
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    }
+  },
+  test: {
+    testMatch: [
+      '<rootDir>/src/**/__tests__/**/*.spec.{js,jsx,ts,tsx}'
+    ],
+    transform: {
+      '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest'
+    },
+    moduleNameMapper: {
+      '^@/(.*)$': '<rootDir>/src/$1'
+    },
+    setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect']
+  }
 })
