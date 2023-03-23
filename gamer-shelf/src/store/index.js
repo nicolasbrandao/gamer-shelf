@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import {
   filtersReducer,
-  toggleFilters,
   updateFiltersSelection,
   updateQueryType,
 } from './slices/filtersSlice'
@@ -28,7 +27,6 @@ setupListeners(store.dispatch)
 
 export {
   toggleGameInLibrary,
-  toggleFilters,
   updateFiltersSelection,
   updateQueryType,
 }

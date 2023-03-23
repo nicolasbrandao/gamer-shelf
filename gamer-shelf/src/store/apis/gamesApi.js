@@ -1,9 +1,18 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+const queryHeaders = {
+  headers: {
+    'X-RapidAPI-Key': import.meta.env.VITE_RAPID_API_KEY,
+    'X-RapidAPI-Host': import.meta.env.VITE_RAPID_API_HOST,
+  }
+}
+
+const URL = import.meta.env.VITE_GAMES_API_BASE_URL
+
 const gamesApi = createApi({
   reducerPath: 'games',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://free-to-play-games-database.p.rapidapi.com/api',
+    baseUrl: URL,
   }),
   endpoints(builder) {
     return {
@@ -11,11 +20,7 @@ const gamesApi = createApi({
         query: () => {
           return {
             url: '/games',
-            headers: {
-              'X-RapidAPI-Key':
-                'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
-              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
-            },
+            ...queryHeaders,
             method: 'GET',
           }
         },
@@ -28,11 +33,7 @@ const gamesApi = createApi({
       fetchGameDetails: builder.query({
         query: (id) => {
           const queryParams = {
-            headers: {
-              'X-RapidAPI-Key':
-                'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
-              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
-            },
+            ...queryHeaders,
             method: 'GET',
           }
           if (id) {
@@ -52,11 +53,7 @@ const gamesApi = createApi({
       fetchFilteredGames: builder.query({
         query: (tag) => {
           const queryParams = {
-            headers: {
-              'X-RapidAPI-Key':
-                'ba04bccd52mshf12f07680608f6dp1bd76bjsn21b135893a7f',
-              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
-            },
+            ...queryHeaders,
             method: 'GET',
           }
           if (tag) {

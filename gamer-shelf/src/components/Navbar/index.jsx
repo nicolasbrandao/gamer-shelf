@@ -16,7 +16,6 @@ const Navbar = () => {
   })
 
   const handleClick = (event) => {
-    event.preventDefault()
     dispatch(updateQueryType(false))
   }
 

@@ -7,6 +7,8 @@ const librarySlice = createSlice({
   },
   reducers: {
     toggleGameInLibrary(state, action) {
+      const gameIsInLibrary = state.libraryList.includes(action.payload)
+      
       if (!state.libraryList.includes(action.payload)) {
         state.libraryList.push(action.payload)
       } else {

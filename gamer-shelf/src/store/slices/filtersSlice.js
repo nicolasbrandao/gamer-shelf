@@ -3,30 +3,22 @@ import { createSlice } from '@reduxjs/toolkit'
 const filtersSlice = createSlice({
   name: 'filters',
   initialState: {
-    isOpen: '',
     tags: [],
     isFiltered: false,
   },
   reducers: {
-    toggleFilters(state, action) {
-      if (state.isOpen === action.payload) {
-        state.isOpen = ''
-      } else {
-        state.isOpen = action.payload
-      }
-    },
     updateFiltersSelection: (state, action) => {
-      if (state.tags.includes(action.payload)) {
-        const index = state.tags.indexOf(action.payload)
-        state.tags.splice(index, 1)
+      const payloadIsInTags = state.tags.includes(action.payload)
+
+      if (payloadIsInTags) {
+        const gameIndex = state.tags.indexOf(action.payload)
+        state.tags.splice(gameIndex, 1)
       } else {
         state.tags.push(action.payload)
       }
-      if (state.tags.length === 0) {
-        state.isFiltered = false
-      } else {
-        state.isFiltered = true
-      }
+
+      const isStateTagsEmpty = state.tags.length === 0 ? true : false
+      state.isFiltered = isStateTagsEmpty ? false : true
     },
     updateQueryType: (state, action) => {
       state.isFiltered = action.payload
@@ -37,6 +29,6 @@ const filtersSlice = createSlice({
   },
 })
 
-export const { toggleFilters, updateFiltersSelection, updateQueryType } =
+export const { updateFiltersSelection, updateQueryType } =
   filtersSlice.actions
 export const filtersReducer = filtersSlice.reducer

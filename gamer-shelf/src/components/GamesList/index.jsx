@@ -12,9 +12,9 @@ const GamesList = () => {
     }
   })
 
-  const { data, error, isLoading } = isFiltered
-    ? useFetchFilteredGamesQuery(tags.join('.'))
-    : useFetchGamesQuery()
+  const fetchGamesData = isFiltered ? useFetchFilteredGamesQuery : useFetchGamesQuery
+
+  const { data, error, isLoading } = fetchGamesData(tags.join('.'))
 
   const promptContainer = classNames(
     'flex',
