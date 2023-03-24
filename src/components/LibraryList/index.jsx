@@ -33,7 +33,13 @@ const LibraryList = () => {
 
   let content
   if (isLoading) {
-    content = <Skeleton times={6} height={'h-[8rem] md:h[300]'} width={'w-full md:w-[280]'} />
+    content = (
+      <Skeleton
+        times={6}
+        height={'h-[8rem] md:h[300]'}
+        width={'w-full md:w-[280]'}
+      />
+    )
   } else if (error) {
     content = <p>Error loading games.</p>
   } else {

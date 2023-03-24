@@ -2,7 +2,12 @@ import { useFetchGameDetailsQuery } from '../../store'
 import { useParams } from 'react-router-dom'
 import classNames from 'classnames'
 import { Skeleton } from '..'
-import { CarouselWrapper, GameDetailsHeader, Paragraph } from './subcomponents'
+import {
+  CarouselWrapper,
+  GameDetailsHeader,
+  MinimumRequirements,
+  Paragraph
+} from './subcomponents'
 
 const GameDetails = () => {
   const { gameId } = useParams()
@@ -36,29 +41,7 @@ const GameDetails = () => {
         <CarouselWrapper screenshots={data.screenshots} />
 
         {data.platform === 'Windows' && (
-          <>
-            <h3 className={subtitle}>Minimum System Requirements</h3>
-            <Paragraph
-              title={'Operational System'}
-              text={data.minimum_system_requirements.os}
-            />
-            <Paragraph
-              title={'Processor'}
-              text={data.minimum_system_requirements.processor}
-            />
-            <Paragraph
-              title={'Memory'}
-              text={data.minimum_system_requirements.memory}
-            />
-            <Paragraph
-              title={'Graphics'}
-              text={data.minimum_system_requirements.graphics}
-            />
-            <Paragraph
-              title={'Storage'}
-              text={data.minimum_system_requirements.storage}
-            />
-          </>
+          <MinimumRequirements data={data.minimum_system_requirements} />
         )}
       </section>
     )
