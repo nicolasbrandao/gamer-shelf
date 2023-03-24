@@ -6,7 +6,7 @@ import {
   CarouselWrapper,
   GameDetailsHeader,
   MinimumRequirements,
-  Paragraph
+  Paragraph,
 } from './subcomponents'
 
 const GameDetails = () => {
