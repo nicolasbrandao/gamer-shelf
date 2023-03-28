@@ -39,7 +39,7 @@ const Skeleton = ({ times, width, height }: PropsType) => {
       )
     })
 
-  return skeletons
+  return <>{skeletons}</>
 }
 
 export default Skeleton

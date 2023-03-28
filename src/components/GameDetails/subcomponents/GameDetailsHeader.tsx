@@ -21,11 +21,15 @@ const GameDetailsHeader = ({
   developer,
   publisher,
 }: PropsType) => {
-  const formattedReleaseDate = Intl.DateTimeFormat('en-US', {
+
+  const intlOptions: Intl.DateTimeFormatOptions = 
+  {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-  }).format(new Date(release_date))
+  }
+
+  const formattedReleaseDate = Intl.DateTimeFormat('en-US', intlOptions).format(new Date(release_date))
 
   const containerHeader = classNames('flex', 'flex-col', 'md:flex-row', 'gap-4')
   const thumbnailClass = classNames('w-[350px]', 'rounded')

@@ -34,7 +34,15 @@ const GameDetails = () => {
     const minimumRequirements = data.minimum_system_requirements
     content = (
       <section className={gameDetailsContainer}>
-        <GameDetailsHeader data={data} />
+        <GameDetailsHeader 
+          release_date={data.release_date}
+          thumbnail={data.thumbnail}
+          title={data.title}
+          genre={data.genre}
+          platform={data.platform}
+          developer={data.developer}
+          publisher={data.publisher}
+        />
 
         <Paragraph title={`About ${data.title}`} text={data.description} />
 
