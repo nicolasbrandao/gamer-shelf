@@ -27,7 +27,7 @@ const App = () => {
       <div className={appContainer}>
         <main>
           <Routes>
-            <Route exact path={'/'} element={<HomePage />} />
+            <Route path={'/'} element={<HomePage />} />
             <Route path={'/library'} element={<LibraryPage />} />
             <Route path={'/game/:gameId'} element={<GameDetails />} />
             <Route path={'/filters'} element={<AdvancedFiltersPage />} />

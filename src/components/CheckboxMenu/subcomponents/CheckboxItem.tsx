@@ -1,10 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { updateFiltersSelection } from '../../../store'
+import { RootState, updateFiltersSelection } from '../../../store'
 import classNames from 'classnames'
 import { ImCheckboxUnchecked, ImCheckboxChecked } from 'react-icons/im'
 
-const CheckboxItem = ({ item }) => {
-  const { tags } = useSelector((state) => {
+type PropsType = {
+  id: string
+  title: string
+}
+
+const CheckboxItem = ({ id, title }: PropsType) => {
+  const { tags } = useSelector((state: RootState) => {
     return {
       tags: state.filters.tags,
     }
@@ -12,13 +17,13 @@ const CheckboxItem = ({ item }) => {
 
   const dispatch = useDispatch()
 
-  const handleClick = (tag) => {
+  const handleClick = (tag: string) => {
     dispatch(updateFiltersSelection(tag))
   }
 
   const menuItemsContainer = classNames('flex', 'items-center', 'gap-2')
 
-  const isChecked = tags.includes(item.id)
+  const isChecked = tags.includes(id)
   const icon = isChecked ? (
     <ImCheckboxChecked aria-hidden="true" />
   ) : (
@@ -27,21 +32,21 @@ const CheckboxItem = ({ item }) => {
 
   return (
     <li
-      key={item.id}
+      key={id}
       className={menuItemsContainer}
-      onClick={() => handleClick(item.id)}
+      onClick={() => handleClick(id)}
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
-          handleClick(item.id)
+          handleClick(id)
         }
       }}
-      tabIndex="0"
+      tabIndex={0}
       role="menuitemcheckbox"
       aria-checked={isChecked}
-      aria-labelledby={`label-${item.id}`}
+      aria-labelledby={`label-${id}`}
     >
       {icon}
-      <span id={`label-${item.id}`}>{item.title}</span>
+      <span id={`label-${id}`}>{title}</span>
     </li>
   )
 }

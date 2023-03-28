@@ -1,6 +1,11 @@
 import classNames from 'classnames'
 
-const Paragraph = ({ title, text }) => {
+type PropsType = {
+  title: string
+  text: string
+}
+
+const Paragraph = ({ title, text }: PropsType) => {
   const subtitle = classNames('font-bold')
   const subtext = classNames('text-sm')
 

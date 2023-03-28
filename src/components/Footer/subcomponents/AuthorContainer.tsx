@@ -4,7 +4,7 @@ import { AiOutlineStar } from 'react-icons/ai'
 import { BiGitRepoForked } from 'react-icons/bi'
 
 const AuthorContainer = () => {
-  const { data } = useFetchGitHubStatsQuery()
+  const { data } = useFetchGitHubStatsQuery({})
 
   const statsWrapper = classNames(
     'flex',

@@ -1,4 +1,4 @@
-import { updateQueryType } from '../../store'
+import { updateQueryType, RootState } from '../../store'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
@@ -9,15 +9,11 @@ import { IoGameControllerOutline } from 'react-icons/io5'
 const Navbar = () => {
   const dispatch = useDispatch()
 
-  const libraryLength = useSelector((state) => {
+  const libraryLength = useSelector((state: RootState) => {
     return state.library.libraryList.length < 10
       ? state.library.libraryList.length
       : '9+'
   })
-
-  const handleClick = () => {
-    dispatch(updateQueryType(false))
-  }
 
   const navbar = classNames(
     'flex',
@@ -67,7 +63,14 @@ const Navbar = () => {
 
   return (
     <nav className={navbar} role="navigation">
-      <Link to={'/'} onClick={(event) => handleClick(event)}>
+      <Link to={'/'} 
+        onClick={() => dispatch(updateQueryType(false))}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            dispatch(updateQueryType(false))
+          }
+        }}
+      >
         <div className={navBrand}>
           <span className={brandText}>GamerShelf</span>
           <IoGameControllerOutline className={brandIcon} aria-hidden="true" />

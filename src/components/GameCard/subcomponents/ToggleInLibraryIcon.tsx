@@ -3,18 +3,24 @@ import { useSelector, useDispatch } from 'react-redux'
 import classNames from 'classnames'
 import { toast } from 'react-toastify'
 import { GoPlus, GoX } from 'react-icons/go'
+import { RootState } from '../../../store'
 
-const ToggleInLibraryIcon = ({ game }) => {
+type PropsType = {
+  id: string
+  title: string
+}
+
+const ToggleInLibraryIcon = ({ id, title }: PropsType) => {
   const dispatch = useDispatch()
-  const { libraryList } = useSelector((state) => {
+  const { libraryList } = useSelector((state: RootState) => {
     return {
       libraryList: state.library.libraryList,
     }
   })
 
-  const handleToggleGame = (gameID) => {
+  const handleToggleGame = (gameID: string) => {
     if (libraryList.includes(gameID)) {
-      toast.error(`${game.title} removed from library`, {
+      toast.error(`${title} removed from library`, {
         position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -23,11 +29,10 @@ const ToggleInLibraryIcon = ({ game }) => {
         draggable: true,
         progress: undefined,
         theme: 'dark',
-        ariaLive: 'polite',
         role: 'alert',
       })
     } else {
-      toast.success(`${game.title} added to library`, {
+      toast.success(`${title} added to library`, {
         position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -36,7 +41,6 @@ const ToggleInLibraryIcon = ({ game }) => {
         draggable: true,
         progress: undefined,
         theme: 'dark',
-        ariaLive: 'polite',
         role: 'alert',
       })
     }
@@ -52,31 +56,31 @@ const ToggleInLibraryIcon = ({ game }) => {
     'text-xl'
   )
 
-  return libraryList.includes(game.id) ? (
+  return libraryList.includes(id) ? (
     <GoX
       className={addButton}
-      onClick={() => handleToggleGame(game.id)}
+      onClick={() => handleToggleGame(id)}
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
-          handleToggleGame(game.id)
+          handleToggleGame(id)
         }
       }}
       role="button"
-      tabIndex="0"
-      aria-label={`Remove ${game.title} from library`}
+      tabIndex={0}
+      aria-label={`Remove ${title} from library`}
     />
   ) : (
     <GoPlus
       className={addButton}
-      onClick={() => handleToggleGame(game.id)}
+      onClick={() => handleToggleGame(id)}
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
-          handleToggleGame(game.id)
+          handleToggleGame(id)
         }
       }}
       role="button"
-      tabIndex="0"
-      aria-label={`Add ${game.title} to library`}
+      tabIndex={0}
+      aria-label={`Add ${title} to library`}
     />
   )
 }

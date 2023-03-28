@@ -1,6 +1,13 @@
 import { Carousel } from 'react-responsive-carousel'
 
-const CarouselWrapper = ({ screenshots }) => {
+type PropsType = {
+  screenshots: Array<{
+    id: number
+    image: string
+  }>
+}
+
+const CarouselWrapper = ({ screenshots }: PropsType) => {
   return (
     <Carousel aria-label="Game screenshots carousel">
       {screenshots.map((image) => (

@@ -3,7 +3,23 @@ import { Link } from 'react-router-dom'
 import { PlatformIcon } from '..'
 import { ToggleInLibraryIcon } from './subcomponents'
 
-const GameCard = ({ game }) => {
+type PropsType = {
+  id: string
+  thumbnail: string
+  title: string
+  short_description: string
+  genre: string
+  platform: string
+}
+
+const GameCard = ({
+  id,
+  thumbnail,
+  title,
+  short_description,
+  genre,
+  platform,
+}: PropsType) => {
   const gameContainer = classNames(
     'flex',
     'flex-col',
@@ -72,25 +88,25 @@ const GameCard = ({ game }) => {
 
   return (
     <div className={gameContainer}>
-      <Link className={gameLink} to={`/game/${game.id}`}>
+      <Link className={gameLink} to={`/game/${id}`}>
         <img
           className={gameThumbnail}
-          src={game.thumbnail}
-          alt={game.title + ' thumbnail'}
+          src={thumbnail}
+          alt={title + ' thumbnail'}
         />
-        <h2 className={gameTitle}>{game.title}</h2>
+        <h2 className={gameTitle}>{title}</h2>
       </Link>
       <div className={gameBody}>
         <p className={gameDescription}>
-          {game.short_description.substring(0, 25) + '...'}
+          {short_description.substring(0, 25) + '...'}
         </p>
         <div className={gameFooter}>
           <div className={buttonContainer}>
-            <ToggleInLibraryIcon game={game} />
+            <ToggleInLibraryIcon id={id} title={title} />
           </div>
           <div className={gameInfo}>
-            <p className={gameGenre}>{game.genre}</p>
-            <PlatformIcon platform={game.platform} />
+            <p className={gameGenre}>{genre}</p>
+            <PlatformIcon platform={platform} />
           </div>
         </div>
       </div>

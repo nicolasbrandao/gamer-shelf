@@ -1,2 +1,2 @@
-# gamer-shelf
- GamerShelf App with IGDB API
+# gamer-shelf-ts
+ Tyscript version of GamerShelf

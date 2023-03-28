@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
-import { PlatformIcon } from '../'
+import { PlatformIcon } from '..'
 import { RemoveFromLibraryIcon } from './subcomponents'
 
-const LibraryGameCard = ({ game }) => {
+type PropsType = {
+  id: string,
+  thumbnail: string
+  title: string
+  genre: string
+  platform: string
+}
+
+const LibraryGameCard = ({ id, thumbnail, title, genre, platform }: PropsType) => {
   const gameContainer = classNames(
     'flex',
     'flex-col',
@@ -66,14 +74,14 @@ const LibraryGameCard = ({ game }) => {
 
   return (
     <div className={gameContainer}>
-      <Link to={`/game/${game.id}`} className={gameHeader}>
-        <img className={gameThumbnail} src={game.thumbnail} alt={game.title} />
-        <p className={gameTitle}>{game.title}</p>
+      <Link to={`/game/${id}`} className={gameHeader}>
+        <img className={gameThumbnail} src={thumbnail} alt={title} />
+        <p className={gameTitle}>{title}</p>
       </Link>
       <div className={gameBody}>
-        <div className={gameGenre}>{game.genre}</div>
-        <PlatformIcon platform={game.platform} />
-        <RemoveFromLibraryIcon game={game} />
+        <div className={gameGenre}>{genre}</div>
+        <PlatformIcon platform={platform} />
+        <RemoveFromLibraryIcon title={title} id={id} />
       </div>
     </div>
   )

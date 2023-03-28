@@ -1,15 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+export interface LibraryState {
+  libraryList: string[]
+}
 
 const librarySlice = createSlice({
   name: 'library',
   initialState: {
     libraryList: [],
-  },
+  } as LibraryState,
   reducers: {
-    toggleGameInLibrary(state, action) {
+    toggleGameInLibrary: (state, action: PayloadAction<string>): void => {
       const gameIsInLibrary = state.libraryList.includes(action.payload)
 
-      if (!state.libraryList.includes(action.payload)) {
+      if (!gameIsInLibrary) {
         state.libraryList.push(action.payload)
       } else {
         const index = state.libraryList.indexOf(action.payload)

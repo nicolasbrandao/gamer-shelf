@@ -1,7 +1,13 @@
 import classNames from 'classnames'
 import { BiLoaderAlt } from 'react-icons/bi'
 
-const Skeleton = ({ times, width, height }) => {
+type PropsType = {
+  times: number,
+  width: string,
+  height: string
+}
+
+const Skeleton = ({ times, width, height }: PropsType) => {
   const wrapper = classNames(
     'relative',
     'overflow-hidden',

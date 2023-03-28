@@ -1,9 +1,21 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+interface QueryParams {
+  headers: {
+    'X-RapidAPI-Key': string
+    'X-RapidAPI-Host': string
+  }
+  method: string
+  params?: {
+    id?: string
+    tag?: string
+  }
+}
+
 const queryHeaders = {
   headers: {
-    'X-RapidAPI-Key': import.meta.env.VITE_RAPID_API_KEY,
-    'X-RapidAPI-Host': import.meta.env.VITE_RAPID_API_HOST,
+    'X-RapidAPI-Key': import.meta.env.VITE_RAPID_API_KEY as string,
+    'X-RapidAPI-Host': import.meta.env.VITE_RAPID_API_HOST as string,
   },
 }
 
@@ -24,15 +36,10 @@ const gamesApi = createApi({
             method: 'GET',
           }
         },
-        provides: (result) => ({
-          data: result?.data,
-          error: result?.error,
-          isLoading: !result,
-        }),
       }),
       fetchGameDetails: builder.query({
         query: (id) => {
-          const queryParams = {
+          const queryParams: QueryParams = {
             ...queryHeaders,
             method: 'GET',
           }
@@ -44,15 +51,10 @@ const gamesApi = createApi({
             ...queryParams,
           }
         },
-        provides: (result) => ({
-          data: result?.data,
-          error: result?.error,
-          isLoading: !result,
-        }),
       }),
       fetchFilteredGames: builder.query({
         query: (tag) => {
-          const queryParams = {
+          const queryParams: QueryParams = {
             ...queryHeaders,
             method: 'GET',
           }
@@ -64,11 +66,6 @@ const gamesApi = createApi({
             ...queryParams,
           }
         },
-        provides: (result) => ({
-          data: result?.data,
-          error: result?.error,
-          isLoading: !result,
-        }),
       }),
     }
   },

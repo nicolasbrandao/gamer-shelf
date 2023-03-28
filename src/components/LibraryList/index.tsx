@@ -1,11 +1,19 @@
-import { useFetchGamesQuery } from '../../store'
+import { useFetchGamesQuery, RootState } from '../../store'
 import { useSelector } from 'react-redux'
 import classNames from 'classnames'
 import { Skeleton, LibraryGameCard } from '..'
 import { VscFolderLibrary } from 'react-icons/vsc'
 
+type GameType = {
+  id: string,
+  thumbnail: string, 
+  title: string, 
+  genre: string, 
+  platform: string,
+}
+
 const LibraryList = () => {
-  const { libraryList } = useSelector((state) => {
+  const { libraryList } = useSelector((state: RootState) => {
     return {
       libraryList: state.library.libraryList,
     }
@@ -43,7 +51,7 @@ const LibraryList = () => {
   } else if (error) {
     content = <p>Error loading games.</p>
   } else {
-    let filteredList = data.filter((item) => libraryList.includes(item.id))
+    let filteredList = data.filter(({ id }: GameType) => libraryList.includes(id))
     let isLibraryEmpty = filteredList.length > 0 ? false : true
     if (isLibraryEmpty) {
       content = (
@@ -53,8 +61,8 @@ const LibraryList = () => {
         </div>
       )
     } else {
-      content = filteredList.map((game) => {
-        return <LibraryGameCard key={game.id} game={game} />
+      content = filteredList.map(({id, thumbnail, title, genre, platform}: GameType) => {
+        return <LibraryGameCard key={id} id={id} thumbnail={thumbnail} title={title} genre={genre} platform={platform} />
       })
     }
   }

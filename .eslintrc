@@ -1,16 +1,19 @@
-{  
+{
   "env": {
-  "browser": true,
-  "es2021": true,
-  "node": true
+    "browser": true,
+    "es2021": true,
+    "node": true
   },
   "extends": [
-    "airbnb", 
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
     "prettier",
+    "prettier/@typescript-eslint",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended"
   ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -21,7 +24,8 @@
   "plugins": [
     "prettier",
     "react",
-    "react-hooks"
+    "react-hooks",
+    "@typescript-eslint"
   ],
   "rules": {
     "prettier/prettier": "error",

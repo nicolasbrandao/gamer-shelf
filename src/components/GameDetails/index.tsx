@@ -31,6 +31,7 @@ const GameDetails = () => {
   } else if (error) {
     content = <div>Error loading games.</div>
   } else {
+    const minimumRequirements = data.minimum_system_requirements
     content = (
       <section className={gameDetailsContainer}>
         <GameDetailsHeader data={data} />
@@ -41,7 +42,13 @@ const GameDetails = () => {
         <CarouselWrapper screenshots={data.screenshots} />
 
         {data.platform === 'Windows' && (
-          <MinimumRequirements data={data.minimum_system_requirements} />
+          <MinimumRequirements
+            os={minimumRequirements.os}
+            processor={minimumRequirements.processor}
+            memory={minimumRequirements.memory}
+            graphics={minimumRequirements.graphics}
+            storage={minimumRequirements.storage}
+          />
         )}
       </section>
     )

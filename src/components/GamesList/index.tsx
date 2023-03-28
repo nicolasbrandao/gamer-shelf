@@ -3,9 +3,19 @@ import { useSelector } from 'react-redux'
 import classNames from 'classnames'
 import { BiCommentError } from 'react-icons/bi'
 import { Skeleton, GameCard } from '..'
+import { RootState } from '../../store'
+
+type DataType = {
+  id: string
+  thumbnail: string
+  title: string
+  short_description: string
+  genre: string
+  platform: string
+}
 
 const GamesList = () => {
-  const { tags, isFiltered } = useSelector((state) => {
+  const { tags, isFiltered } = useSelector((state: RootState) => {
     return {
       tags: state.filters.tags,
       isFiltered: state.filters.isFiltered,
@@ -48,9 +58,28 @@ const GamesList = () => {
           <BiCommentError size={100} aria-label="No games match the filters" />
         </div>
       ) : (
-        data?.map((game) => {
-          return <GameCard key={game.id} game={game} />
-        })
+        data?.map(
+          ({
+            id,
+            thumbnail,
+            title,
+            short_description,
+            genre,
+            platform,
+          }: DataType) => {
+            return (
+              <GameCard
+                key={id}
+                id={id}
+                thumbnail={thumbnail}
+                title={title}
+                short_description={short_description}
+                genre={genre}
+                platform={platform}
+              />
+            )
+          }
+        )
       )
   }
 

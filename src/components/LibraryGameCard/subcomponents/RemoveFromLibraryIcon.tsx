@@ -3,19 +3,25 @@ import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 import { CgTrash } from 'react-icons/cg'
 import { toast } from 'react-toastify'
+import { RootState } from '../../../store'
 
-const RemoveFromLibraryIcon = ({ game }) => {
+type PropsType = {
+  id: string,
+  title: string
+}
+
+const RemoveFromLibraryIcon = ({ title, id }: PropsType) => {
   const dispatch = useDispatch()
 
-  const { libraryList } = useSelector((state) => {
+  const { libraryList } = useSelector((state: RootState) => {
     return {
       libraryList: state.library.libraryList,
     }
   })
 
-  const handleToggleGame = (gameID) => {
+  const handleToggleGame = (gameID: string) => {
     if (libraryList.includes(gameID)) {
-      toast.error(`${game.title} removed from library`, {
+      toast.error(`${title} removed from library`, {
         position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -24,10 +30,9 @@ const RemoveFromLibraryIcon = ({ game }) => {
         draggable: true,
         progress: undefined,
         theme: 'dark',
-        ariaLive: 'polite',
       })
     } else {
-      toast.success(`${game.title} added to library`, {
+      toast.success(`${title} added to library`, {
         position: 'bottom-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -36,7 +41,6 @@ const RemoveFromLibraryIcon = ({ game }) => {
         draggable: true,
         progress: undefined,
         theme: 'dark',
-        ariaLive: 'polite',
       })
     }
 
@@ -49,13 +53,13 @@ const RemoveFromLibraryIcon = ({ game }) => {
     <>
       <CgTrash
         className={icon}
-        onClick={() => handleToggleGame(game.id)}
+        onClick={() => handleToggleGame(id)}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
-            handleToggleGame(game.id)
+            handleToggleGame(id)
           }
         }}
-        tabIndex="0"
+        tabIndex={0}
         role="button"
         aria-label="Remove game from library"
       />

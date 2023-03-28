@@ -1,7 +1,11 @@
 import { GoBrowser } from 'react-icons/go'
 import { FaWindows } from 'react-icons/fa'
 
-const PlatformIcon = ({ platform }) => {
+type PropsType = {
+  platform: string
+}
+
+const PlatformIcon = ({ platform }: PropsType) => {
   return platform.includes('Windows') ? (
     <FaWindows aria-label="Platform: PC (Windows)" />
   ) : (
