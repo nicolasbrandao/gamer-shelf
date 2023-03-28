@@ -3,11 +3,11 @@ import { BiLoaderAlt } from 'react-icons/bi'
 
 type PropsType = {
   times: number,
-  width: string,
-  height: string
+  width?: string,
+  height?: string
 }
 
-const Skeleton = ({ times, width, height }: PropsType) => {
+const Skeleton = ({ times, width=undefined, height=undefined }: PropsType) => {
   const wrapper = classNames(
     'relative',
     'overflow-hidden',
