@@ -1,9 +1,13 @@
-import { advancedFiltersContent } from '../../../constants'
+import { advancedFiltersContent } from '@/constants'
 import { FiltersSidebarListItem } from '.'
 
 const FiltersSidebarList = () => {
   const filtersMenu = advancedFiltersContent.map((item) => (
-    <FiltersSidebarListItem key={item.id} title={item.title} items={item.items} />
+    <FiltersSidebarListItem
+      key={item.id}
+      title={item.title}
+      items={item.items}
+    />
   ))
 
   return (

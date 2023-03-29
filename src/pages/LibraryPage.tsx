@@ -1,4 +1,4 @@
-import { LibraryList } from '../components'
+import { LibraryList } from '@/components'
 
 const LibraryPage = () => {
   return (

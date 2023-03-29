@@ -4,14 +4,20 @@ import { PlatformIcon } from '..'
 import { RemoveFromLibraryIcon } from './subcomponents'
 
 type PropsType = {
-  id: string,
+  id: string
   thumbnail: string
   title: string
   genre: string
   platform: string
 }
 
-const LibraryGameCard = ({ id, thumbnail, title, genre, platform }: PropsType) => {
+const LibraryGameCard = ({
+  id,
+  thumbnail,
+  title,
+  genre,
+  platform,
+}: PropsType) => {
   const gameContainer = classNames(
     'flex',
     'flex-col',

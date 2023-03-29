@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import logo from '../../../assets/api-logo.png'
+import logo from '@/assets/api-logo.png'
 
 const ApiLogoContainer = () => {
   const logoContainer = classNames(

@@ -1,9 +1,8 @@
-import { toggleGameInLibrary } from '../../../store'
+import { toggleGameInLibrary, RootState } from '@/store'
 import { useSelector, useDispatch } from 'react-redux'
 import classNames from 'classnames'
 import { toast } from 'react-toastify'
 import { GoPlus, GoX } from 'react-icons/go'
-import { RootState } from '../../../store'
 
 type PropsType = {
   id: string

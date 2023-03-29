@@ -1,4 +1,4 @@
-import { useFetchGitHubStatsQuery } from '../../../store'
+import { useFetchGitHubStatsQuery } from '@/store'
 import classNames from 'classnames'
 import { AiOutlineStar } from 'react-icons/ai'
 import { BiGitRepoForked } from 'react-icons/bi'

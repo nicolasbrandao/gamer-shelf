@@ -1,12 +1,11 @@
-import { toggleGameInLibrary } from '../../../store'
+import { toggleGameInLibrary, RootState } from '@/store'
 import { useDispatch, useSelector } from 'react-redux'
 import classNames from 'classnames'
 import { CgTrash } from 'react-icons/cg'
 import { toast } from 'react-toastify'
-import { RootState } from '../../../store'
 
 type PropsType = {
-  id: string,
+  id: string
   title: string
 }
 

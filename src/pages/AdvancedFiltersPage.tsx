@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { FiltersSideBar, GamesList } from '../components'
+import { FiltersSideBar, GamesList } from '@/components'
 
 const AdvancedFiltersPage = () => {
   const mainContainer = classNames(

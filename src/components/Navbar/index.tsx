@@ -1,4 +1,4 @@
-import { updateQueryType, RootState } from '../../store'
+import { updateQueryType, RootState } from '@/store'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
@@ -63,7 +63,8 @@ const Navbar = () => {
 
   return (
     <nav className={navbar} role="navigation">
-      <Link to={'/'} 
+      <Link
+        to={'/'}
         onClick={() => dispatch(updateQueryType(false))}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {

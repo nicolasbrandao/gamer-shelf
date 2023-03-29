@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState, updateFiltersSelection } from '../../../store'
+import { RootState, updateFiltersSelection } from '@/store'
 import classNames from 'classnames'
 import { ImCheckboxUnchecked, ImCheckboxChecked } from 'react-icons/im'
 

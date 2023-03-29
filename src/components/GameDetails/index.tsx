@@ -1,4 +1,4 @@
-import { useFetchGameDetailsQuery } from '../../store'
+import { useFetchGameDetailsQuery } from '@/store'
 import { useParams } from 'react-router-dom'
 import classNames from 'classnames'
 import { Skeleton } from '..'
@@ -34,7 +34,7 @@ const GameDetails = () => {
     const minimumRequirements = data.minimum_system_requirements
     content = (
       <section className={gameDetailsContainer}>
-        <GameDetailsHeader 
+        <GameDetailsHeader
           release_date={data.release_date}
           thumbnail={data.thumbnail}
           title={data.title}

@@ -1,9 +1,12 @@
-import { useFetchGamesQuery, useFetchFilteredGamesQuery } from '../../store'
+import {
+  useFetchGamesQuery,
+  useFetchFilteredGamesQuery,
+  RootState,
+} from '@/store'
 import { useSelector } from 'react-redux'
 import classNames from 'classnames'
 import { BiCommentError } from 'react-icons/bi'
 import { Skeleton, GameCard } from '..'
-import { RootState } from '../../store'
 
 type DataType = {
   id: string
