@@ -7,7 +7,7 @@
   <a href="#-environment-variables">Environment Variables</a>&nbsp;|&nbsp;
   <a href="#-install-and-scripts">Install & Scripts</a>&nbsp;|&nbsp;
   <a href="#-contribution">Contribution</a>&nbsp;|&nbsp;
-  <a href="#-license">License</a>&nbsp;|&nbsp;
+  <a href="#-license">License</a>
 </p>
 
 <br>
