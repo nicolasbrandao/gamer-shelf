@@ -1,13 +1,13 @@
 # 🎮 GamerShelf
 
 <p align="center">
-  <a href="#-description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-deploy">Deploy</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-tech-stack">Tech Stack</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-environment-variables">Environment Variables</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-install-&-scripts">Install & Scripts</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-contribution">contribution</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-license">License</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-description">Description</a>&nbsp;|&nbsp;
+  <a href="#-deploy">Deploy</a>&nbsp;|&nbsp;
+  <a href="#-tech-stack">Tech Stack</a>&nbsp;|&nbsp;
+  <a href="#-environment-variables">Environment Variables</a>&nbsp;|&nbsp;
+  <a href="#-install-and-scripts">Install & Scripts</a>&nbsp;|&nbsp;
+  <a href="#-contribution">Contribution</a>&nbsp;|&nbsp;
+  <a href="#-license">License</a>&nbsp;|&nbsp;
 </p>
 
 <br>
@@ -65,7 +65,7 @@ This web app needs three Environment Variables:
 
 All three variables are type string and provided by [Rapid API](https://rapidapi.com/)
 
-## 👨‍💻 Install & Scripts
+## 👨‍💻 Install and Scripts
 
 Download and setup the environment variables in a ```.env``` file in your root folder
 
