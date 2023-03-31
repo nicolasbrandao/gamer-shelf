@@ -49,8 +49,6 @@ This web app utilizes the [free-to-play API](https://www.freetogame.com/api-doc)
     - Classnames
 - ESLint + Prettier
     - Airbnb JavaScript Style Guidelines
-- Dotenv
-    - Path resolving / alias
 
 
 ## 🔢 Environment Variables
