@@ -90,7 +90,7 @@ Create build for deploying:
 
 ## 👥 Contribution
 
-If you'd like to contribute with this project, simply open up a Pull Request.
+If you'd like to contribute with to project, simply open up a Pull Request.
 
 
 ## 🔑 License
